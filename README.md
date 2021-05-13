@@ -14,11 +14,11 @@
 
 <br/>
 
-## 🚀&nbsp; Installation and Documentation
+## 🚀&nbsp; Installation
 
 //TODO
 
-## ❤️&nbsp; Community and Contributions
+## ❤️&nbsp; Contributions
 
 The Symbiose content management system is a made by 6 people : 
 <br>
