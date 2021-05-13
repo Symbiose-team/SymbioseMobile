@@ -10,7 +10,7 @@
 
 <br/>
 
-[Symbiose] is a highly extensible open-source **PHP content management system based** on the [Symfony](https://symfony.com/) framework. 
+[Symbiose] is a **PHP content management system based** on the [Symfony](https://symfony.com/) framework. 
 
 <br/>
 
