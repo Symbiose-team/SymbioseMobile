@@ -38,6 +38,7 @@ import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.util.Resources;
+import com.symbiose.GestionEvents.gui.HomeForm;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -143,6 +144,6 @@ public abstract class SideMenuBaseForm extends Form {
     }
 
     protected void showActivities(Resources res) {
-//        new ActivitiesForm(res).show();
+        new HomeForm().show();
     }
 }
