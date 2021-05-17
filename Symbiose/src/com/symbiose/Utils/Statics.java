@@ -5,11 +5,6 @@
  */
 package com.symbiose.Utils;
 
-import com.symbiose.GestionUsers.entities.User;
-import com.codename1.io.Preferences;
-import com.codename1.io.Storage;
-import java.util.Map;
-
 /**
  *
  * @author  

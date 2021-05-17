@@ -5,6 +5,7 @@
  */
 package com.symbiose.GestionEvents.gui;
 
+import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
 import com.codename1.ui.Dialog;
@@ -33,16 +34,24 @@ public class AddEventForm extends Form{
         
         TextField tfName = new TextField("","Event name");
         //TextField tfSupplier = new TextField("","Supplier");
-        //Picker date = new Picker();
-        //date.setType(Display.PICKER_TYPE_DATE_AND_TIME);
+        
+        Picker date = new Picker();
+        date.setType(Display.PICKER_TYPE_DATE_AND_TIME);
+        
         TextField tfType = new TextField("","Type");
-        Integer numParticipants = 100;
-        Integer numRemaining = 100;
-        //int State = 0;
+        int numParticipants = 100;
+        int numRemaining = 100;
+        int State = 0;
         //TextField tfNumParticipants = new TextField("","Num Participants");
         //TextField tfNumRemaining = new TextField("","Num Remaining");
-        //TextField tfStatus = new TextField("","Status");
+        TextField tfStatus = new TextField("","Status");
         Button btnValider = new Button("Add Event");
+        Button btnDashboard = new Button("Go back Dashboard");
+
+        //getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+        btnDashboard.addActionListener(e-> previous.showBack());
+
+        addAll(btnDashboard);
         
         btnValider.addActionListener(new ActionListener(){
             @Override
@@ -52,11 +61,16 @@ public class AddEventForm extends Form{
                 }
                 else
                 {
+                    SimpleDateFormat format = new SimpleDateFormat();  
+                    
                     try {
                         Event e = new Event(tfName.getText(), 
+                                            //tfSupplier.getText(),
+                                            format.format(date.getDate()),
                                             numParticipants,
                                             numRemaining,
-                                            tfType.getText());
+                                            tfType.getText(),
+                                            State);
                         
                         if(new ServiceEvent().addEvent(e))
                             Dialog.show("Success","Connection accepted", new Command("OK"));
@@ -73,9 +87,8 @@ public class AddEventForm extends Form{
         addAll(tfName,
                 //tfSupplier,
                 tfType,
-                //date,
+                date,
                 btnValider);
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
 
     
