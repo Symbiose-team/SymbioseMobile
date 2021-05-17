@@ -20,15 +20,9 @@ public class Event {
     private String type;
     private int state;
 
-    public Event(String name, 
-            //String supplier, 
-            String date, 
-            int numParticipants, 
-            int numRemaining, 
-            String type, 
-            int state) {
+    public Event(String name, String supplier, String date, int numParticipants, int numRemaining, String type, int state) {
         this.name = name;
-        //this.supplier = supplier;
+        this.supplier = supplier;
         this.date = date;
         this.numParticipants = numParticipants;
         this.numRemaining = numRemaining;
@@ -36,11 +30,15 @@ public class Event {
         this.state = state;
     }
     
-    public Event(int id){
-        this.id = id;
-        //this.name = name;
+    public Event(String name, int numParticipants, int numRemaining, String type) {
+        this.name = name;
+        //this.date = date;
+        this.numParticipants = numParticipants;
+        this.numRemaining = numRemaining;
+        this.type = type;
+        //this.state = state;
     }
-    
+
     public Event() {
     }
 
@@ -68,6 +66,7 @@ public class Event {
         this.supplier = supplier;
     }
     
+
     public String getDate() {
         return date;
     }
@@ -75,7 +74,7 @@ public class Event {
     public void setDate(String date) {
         this.date = date;
     }
-    
+
     public int getNumParticipants() {
         return numParticipants;
     }
@@ -113,9 +112,7 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{" + "name=" + name + ", "
-                //+ "date=" + date + ","
-                + " numParticipants=" + numParticipants + ", numRemaining=" + numRemaining + ", state=" + state + '}';
+        return "Event{" + "name=" + name + ", date=" + date + ", numParticipants=" + numParticipants + ", numRemaining=" + numRemaining + ", state=" + state + '}';
     }
     
 }

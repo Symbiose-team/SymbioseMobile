@@ -48,7 +48,7 @@ import java.util.Map;
  *
  * @author Shai Almog
  */
-public class SideMenuBaseForm extends Form {
+public abstract class SideMenuBaseForm extends Form {
 
     userService u = new userService();
 
@@ -71,7 +71,7 @@ public class SideMenuBaseForm extends Form {
 
         User us = u.profile();
         String image = us.getPicture();
-        String firstname = us.getFirst_name();
+                String firstname = us.getFirst_name();
 
         EncodedImage placeholder = EncodedImage.createFromImage(res.getImage("Image6.png"), false);
 
@@ -144,6 +144,6 @@ public class SideMenuBaseForm extends Form {
     }
 
     protected void showActivities(Resources res) {
-        new HomeForm(res).show();
+        new HomeForm().show();
     }
 }

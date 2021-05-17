@@ -14,20 +14,20 @@
         </group>
         <group>
             <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/entities/User.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/editProfileForm.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/WalkthruForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/LoginForm.java</file>
             <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/ListEventsForm.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/DetailsEvent.java</file>
             <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/Utils/SideMenuBaseForm.java</file>
             <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/HomeForm.java</file>
             <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/AddEventForm.java</file>
             <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/services/userService.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/Utils/Session.java</file>
             <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/settingsForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/Utils/Session.java</file>
             <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/services/ServiceEvent.java</file>
             <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/RegisterForm.java</file>
             <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/entities/Event.java</file>
             <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/Utils/Statics.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/Dashboard.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/Symbiose.java</file>
         </group>
     </open-files>
 </project-private>

@@ -13,9 +13,6 @@ import com.codename1.io.NetworkManager;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.events.ActionListener;
 import com.symbiose.GestionEvents.entities.Event;
-import com.symbiose.GestionUsers.entities.User;
-import static com.symbiose.GestionUsers.services.userService.getResponse;
-import com.symbiose.Utils.Session;
 import com.symbiose.Utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +25,7 @@ import java.util.Map;
  * @author Mahdi
  */
 public class ServiceEvent {
-    public ArrayList<Event> events;
+    public ArrayList<Event> event;
     private ConnectionRequest req;
     public static ServiceEvent instance = null  ;
     public boolean resultOK;
@@ -43,135 +40,130 @@ public class ServiceEvent {
         return instance;
     }
     
-    public boolean addEvent(Event ev){
+      public boolean addEvent(Event ev){
           
-        String url = Statics.BASE_URL+"addEventJSON/new?name="+ev.getName()+"&date="+ev.getDate()
-                +"&num_participants="+ev.getNumParticipants()
-                +"&num_remaining="+ev.getNumRemaining()
-                +"&type="+ev.getType()
-                +"&state="+ev.getState();
+        String url = Statics.BASE_URL+"/addEventJSON/"+ev.getName()
+                //+"/"+ev.getDate()
+                +"/"+ev.getNumParticipants()+"/"+ev.getNumRemaining()+"/"+ev.getType()+"/"+ev.getState();
         System.out.println(url);
         req.setUrl(url);
-       
+        /*
+        req.addResponseListener(new ActionListener<NetworkEvent>(){
+            public void actionPerformed(NetworkEvent evt){
+                resultOK = req.getResponseCode()==200;
+                req.addResponseListener(this);
+            }
+        });
+        */
         req.addResponseListener((e)->{
             String str = new String(req.getResponseData());
             System.out.println("data ="+str);
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         return true;
+    }
+      
+    public ArrayList<Event> getAllEvent(){
+        
+        ArrayList<Event> result = new ArrayList<>();
+        
+        String url = Statics.BASE_URL+"/AllEvents/";
+        req.setUrl(url);
+        
+        //req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>(){
+            @Override
+            public void actionPerformed(NetworkEvent evt){
+                //event = parseEvent(new String(req.getResponseData()));
+                JSONParser jsonp;
+                jsonp = new JSONParser();
+                
+                try{
+                    Map<String,Object>mapEvents = jsonp.parseJSON(new CharArrayReader(new String(req.getResponseData()).toCharArray()));
+                    
+                    List<Map<String,Object>> listOfMaps = (List<Map<String,Object>>) mapEvents.get("root");
+                    
+                    for(Map<String,Object> obj:listOfMaps){
+                        Event ev = new Event();
+                        
+                        float id = Float.parseFloat(obj.get("id").toString());
+                        
+                        String name = obj.get("Name").toString();
+                        
+                        float numParticip = Float.parseFloat(obj.get("num_participants").toString());
+                        
+                        float numRemaining = Float.parseFloat(obj.get("num_remianing").toString());
+                        
+                        String type = obj.get("type").toString();
+                        
+                        String supplier = obj.get("supplier").toString();
+
+                        
+                        float state = Float.parseFloat(obj.get("state").toString());
+                        
+                        ev.setId((int)id);
+                        ev.setName(name);
+                        ev.setNumParticipants((int)numParticip);
+                        ev.setNumRemaining((int)numRemaining);
+                        ev.setType(type);
+                        ev.setState((int)state);
+                        ev.setSupplier(supplier);
+                        
+                        //date
+                        String DateConverter = obj.get("date").toString().substring(obj.get("date").toString().indexOf("timestamp") + 10, obj.get("obj").toString().lastIndexOf("}"));
+                        
+                        Date currentTime = new Date(Double.valueOf(DateConverter).longValue() * 1000);
+                        
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM--dd");
+                        String dateString = formatter.format(currentTime);
+                        ev.setDate(dateString);
+                        
+                        result.add(ev);
+                    }
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
+                //req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return result;
     }
     
-    public boolean deleteEvent(int id){
-          
-        //http://127.0.0.1:8000/addEventJSON/new?name=fffffffffffffff&num_participants=100&num_remaining=100&type=football&state=1
-        String url = Statics.BASE_URL+"deleteEventJSON/"+id;
-        System.out.println(url);
-        req.setUrl(url);
-       
-        req.addResponseListener((e)->{
-            String str = new String(req.getResponseData());
-            System.out.println("data ="+str);
-        });
-        NetworkManager.getInstance().addToQueueAndWait(req);
-        return true;
-    }
-     
-    //affichage events
-    public ArrayList<Event> parseTasks(String jsonText){
+    /*
+    public ArrayList<Event> parseEvent(String jsonText){
         try {
-            events=new ArrayList<>();
+            event=new ArrayList<>();
             JSONParser j = new JSONParser();// Instanciation d'un objet JSONParser permettant le parsing du résultat json
 
- 
-            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            Map<String,Object> eventsListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
             
-            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            java.util.List<Map<String,Object>> list = (java.util.List<Map<String,Object>>)eventsListJson.get("root");
             
+            //Parcourir la liste des tâches Json
             for(Map<String,Object> obj : list){
-                Event t = new Event();
-              
-     
-                t.setName(obj.get("name").toString());
-
-                //Ajouter la tâche extraite de la réponse Json à la liste
-                events.add(t);
+                //Création des tâches et récupération de leurs données
+                Event e = new Event();
+                float id = Float.parseFloat(obj.get("id").toString());
+                e.setId((int)id);
+                //e.setSupplier(obj.get("supplier").toString());
+                e.setName(obj.get("name").toString());
+                //e.setDate((Date) obj.get("date"));
+                //e.setNumParticipants(((int)Float.parseFloat(obj.get("num_participants").toString())));
+                //e.setNumRemaining(((int)Float.parseFloat(obj.get("num_remaining").toString())));
+                //e.setType(obj.get("type").toString());
+                //e.setState(((int)Float.parseFloat(obj.get("state").toString())));
+                event.add(e);
             }
             
             
         } catch (IOException ex) {
             
         }
-        return events;
+       
+        return event;
     }
-    
-    public ArrayList<Event> getAllEvents(){
-        String url = "http://localhost:8000/AllEvents";
-               req.setUrl(url);
-        req.setPost(false);
-        req.addResponseListener(new ActionListener<NetworkEvent>() {
-            
-            @Override
-          
-            public void actionPerformed(NetworkEvent evt) {
-           
-              
-             //System.out.println( new String (req.getResponseData()));
-                events = parseTasks(new String(req.getResponseData()));
-               req.removeResponseListener(this);
-            }
-        });
-        NetworkManager.getInstance().addToQueueAndWait(req);
-        return events;
-    }
-    
-    public Event getEvent(String idEvent){
-        
-        Event ev = new Event();
-        Map m = getResponse("EventJSON/"
-                +idEvent);
-        //+Session.u.getId()
-        ArrayList d = (ArrayList) m.get("root");
-        System.out.println(d);
-        Map n = (Map) d.get(0);
-        System.out.println(n);
-        if (n.equals("false")) {
-            return null;
-        } else {
-
-            int id = (int) Float.parseFloat(n.get("id").toString());
-            int numParticip = (int) Float.parseFloat(n.get("num_participants").toString());
-            int numRemaining = (int) Float.parseFloat(n.get("num_remaining").toString());
-            int State = (int) Float.parseFloat(n.get("state").toString());
-
-            ev.setId(id);
-            ev.setName(n.get("name").toString());
-            ev.setNumParticipants(numParticip);
-            ev.setNumRemaining(numRemaining);
-            ev.setType(n.get("type").toString());
-            ev.setState(State);
-            
-          
-                   
-                        //ev.setSupplier(supplier);
-                        
-                        //date
-                        
-                        //String DateConverter = obj.get("date").toString().substring(obj.get("date").toString().indexOf("timestamp") + 10, obj.get("obj").toString().lastIndexOf("}"));
-                        
-                        //Date currentTime = new Date(Double.valueOf(DateConverter).longValue() * 1000);
-                        
-                        //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM--dd");
-                        //String dateString = formatter.format(currentTime);
-                        //ev.setDate(dateString);
-                        
-            
-            
-            return ev;
-
-        }
-        
+    */
     
     
-    
-    }
 }
