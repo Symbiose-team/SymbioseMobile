@@ -61,6 +61,21 @@ public class ServiceEvent {
         return true;
     }
     
+    public void updateReponse(Event rep) {
+     
+            ConnectionRequest con = new ConnectionRequest();// création d'une nouvelle demande de connexion
+            con.setUrl("http://localhost:8000/Event/put/" +rep.getId()+ "/" +rep.getName()) ;// Insertion de l'URL de notre demande de connexion     
+            NetworkManager.getInstance().addToQueueAndWait(con);// Ajout de notre demande de connexion à la file d'attente du NetworkManager
+            String data = new String(con.getResponseData());
+            JSONParser j = new JSONParser();
+        try {
+            System.out.println(j.parseJSON(new CharArrayReader(data.toCharArray())));
+        } catch (IOException ex) {
+        
+        }
+    }
+    
+    //delete event
     public boolean deleteEvent(int id){
           
         //http://127.0.0.1:8000/addEventJSON/new?name=fffffffffffffff&num_participants=100&num_remaining=100&type=football&state=1
@@ -76,7 +91,7 @@ public class ServiceEvent {
         return true;
     }
      
-    //affichage events
+    //affichage events TODO:fix nullpointer
     public ArrayList<Event> parseTasks(String jsonText){
         try {
             events=new ArrayList<>();

@@ -41,6 +41,11 @@ public class Event {
         //this.name = name;
     }
     
+    public Event(int id, String name){
+        this.id = id;
+        this.name = name;
+    }
+    
     public Event() {
     }
 

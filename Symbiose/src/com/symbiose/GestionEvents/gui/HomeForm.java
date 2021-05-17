@@ -63,6 +63,7 @@ public class HomeForm extends Form{
         Button btnDeleteEvents = new Button("Delete events");
         Button btnDashboard = new Button("Go back Dashboard");
         Button btnDetails = new Button("Details");
+        Button btnUpdate = new Button("Update event");
 
 
         
@@ -71,8 +72,9 @@ public class HomeForm extends Form{
         btnDeleteEvents.addActionListener(e-> new DeleteEventForm(current).show());
         btnDashboard.addActionListener(e-> new Dashboard(res).show());
         btnDetails.addActionListener(e-> new DetailsEvent(current).show());
+        btnUpdate.addActionListener(e-> new UpdateEvent(current).show());
         //getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> new Dashboard(res).show());
-        addAll(btnAddEvent,btnListEvents,btnDeleteEvents,btnDetails,btnDashboard);
+        addAll(btnAddEvent,btnListEvents,btnUpdate,btnDeleteEvents,btnDashboard);
         
         
     }
