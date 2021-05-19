@@ -61,6 +61,7 @@ public class ServiceEvent {
         return true;
     }
     
+    //update event
     public void updateReponse(Event rep) {
      
             ConnectionRequest con = new ConnectionRequest();// création d'une nouvelle demande de connexion
@@ -91,7 +92,7 @@ public class ServiceEvent {
         return true;
     }
      
-    //affichage events TODO:fix nullpointer
+    //affichage events
     public ArrayList<Event> parseTasks(String jsonText){
         try {
             events=new ArrayList<>();
@@ -104,9 +105,22 @@ public class ServiceEvent {
             
             for(Map<String,Object> obj : list){
                 Event t = new Event();
-              
-     
-                t.setName(obj.get("name").toString());
+                
+                float id = Float.parseFloat(obj.get("id").toString());
+                        
+                String name = obj.get("Name").toString();
+                        
+                float numParticip = Float.parseFloat(obj.get("NumParticipants").toString());
+                        
+                float numRemaining = Float.parseFloat(obj.get("NumRemaining").toString());
+                        
+                String type = obj.get("Type").toString();
+                             
+                t.setId((int)id);
+                t.setName(name);
+                //t.setNumParticipants((int)numParticip);
+                //t.setNumRemaining((int)numRemaining);
+                t.setType(type);
 
                 //Ajouter la tâche extraite de la réponse Json à la liste
                 events.add(t);
@@ -139,54 +153,27 @@ public class ServiceEvent {
         return events;
     }
     
-    public Event getEvent(String idEvent){
+    public Event getEvent(int idEvent){
         
         Event ev = new Event();
-        Map m = getResponse("EventJSON/"
-                +idEvent);
-        //+Session.u.getId()
+        Map m = getResponse("EventJSON/"+idEvent);
         ArrayList d = (ArrayList) m.get("root");
         System.out.println(d);
         Map n = (Map) d.get(0);
         System.out.println(n);
-        if (n.equals("false")) {
-            return null;
-        } else {
-
-            int id = (int) Float.parseFloat(n.get("id").toString());
-            int numParticip = (int) Float.parseFloat(n.get("num_participants").toString());
-            int numRemaining = (int) Float.parseFloat(n.get("num_remaining").toString());
-            int State = (int) Float.parseFloat(n.get("state").toString());
-
-            ev.setId(id);
-            ev.setName(n.get("name").toString());
-            ev.setNumParticipants(numParticip);
-            ev.setNumRemaining(numRemaining);
-            ev.setType(n.get("type").toString());
-            ev.setState(State);
-            
-          
-                   
-                        //ev.setSupplier(supplier);
-                        
-                        //date
-                        
-                        //String DateConverter = obj.get("date").toString().substring(obj.get("date").toString().indexOf("timestamp") + 10, obj.get("obj").toString().lastIndexOf("}"));
-                        
-                        //Date currentTime = new Date(Double.valueOf(DateConverter).longValue() * 1000);
-                        
-                        //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM--dd");
-                        //String dateString = formatter.format(currentTime);
-                        //ev.setDate(dateString);
-                        
-            
-            
-            return ev;
-
-        }
         
-    
-    
-    
+        float id = Float.parseFloat(n.get("id").toString());
+        int numParticip = (int) Float.parseFloat(n.get("NumParticipants").toString());
+        int numRemaining = (int) Float.parseFloat(n.get("NumRemaining").toString());
+        int State = (int) Float.parseFloat(n.get("State").toString());
+
+        ev.setId((int) id);
+        ev.setName(n.get("Name").toString());
+        ev.setNumParticipants(numParticip);
+        ev.setNumRemaining(numRemaining);
+        ev.setType(n.get("Type").toString());
+        ev.setState(State);
+       
+        return ev;  
     }
 }

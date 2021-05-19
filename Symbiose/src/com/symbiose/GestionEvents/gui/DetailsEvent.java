@@ -40,7 +40,6 @@ import java.util.Random;
  * @author Mahdi
  */
 public class DetailsEvent extends Form{
-    userService u = new userService();
     ServiceEvent e = new ServiceEvent();
     public DetailsEvent(Form previous) {
         //setTitle("Add a new Event");
@@ -54,25 +53,11 @@ public class DetailsEvent extends Form{
         super(BoxLayout.y());
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
-        User us = u.profile();
-        System.out.println(us);
-        String role = us.getRole();
-        String name = us.getFirst_name();
-        String lastname = us.getLast_name();
-        String email = us.getEmail();
-        String adresse= us.getAdresse();
-        String phone = us.getPhone_number();
-        String cin = us.getCin();
-        String birthday = us.getBirthday();
-        String genre = us.getGenre();
+        
         Button btnDashboard = new Button("Go back Dashboard");
         TextField idEvent = new TextField("","Event id");
         Button showDetail = new Button("Show Event");
         SpanLabel sp = new SpanLabel();
-        
-        Event ev = e.getEvent("220");
-        System.out.println(ev);
-
 
         btnDashboard.addActionListener(e-> previous.showBack());
         
@@ -85,7 +70,8 @@ public class DetailsEvent extends Form{
                 else
                 {
                     //sp.setText(ServiceEvent.getInstance().getEvent(idEvent.getText()).toString());
-                   
+                    Event ev = e.getEvent(Integer.parseInt((idEvent.getText())));
+                    System.out.println(ev);
                     String ev_name = ev.getName();
                     String type = ev.getType();
                     int num_participant = ev.getNumParticipants();
@@ -103,17 +89,6 @@ public class DetailsEvent extends Form{
         });
 
         addAll(idEvent,btnDashboard,showDetail);
-       
-
-        addButtonBottom("Name: " + name, 0x5ae29d, true);
-        addButtonBottom("Lastname: " + lastname, 0x5ae29d, true);
-        addButtonBottom("Email: " + email, 0x5ae29d, true);
-        addButtonBottom("Genre: " + genre, 0x5ae29d, true);
-        addButtonBottom("Role: " + role, 0x5ae29d, true);
-        addButtonBottom("Adresse: " + adresse, 0x5ae29d, true);
-        addButtonBottom("Cin : " + cin, 0x5ae29d, true);
-        addButtonBottom("Phone: " + phone, 0x5ae29d, true);
-        addButtonBottom("Birthday: " + birthday, 0x5ae29d, true);
         
   
     }

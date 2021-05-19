@@ -37,11 +37,9 @@ import java.util.Random;
  */
 public class ListEventsForm extends Form{
     public ListEventsForm(Form previous) {
-        setTitle("Add a new Event");
         
         SpanLabel sp = new SpanLabel();
         sp.setText(ServiceEvent.getInstance().getAllEvents().toString());
-        add(sp);
         //getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
         
         //super(new BorderLayout(BorderLayout.CENTER_BEHAVIOR_CENTER_ABSOLUTE));

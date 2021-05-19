@@ -25,7 +25,8 @@ public class UpdateEvent extends Form {
     public UpdateEvent(Form previous) {
         TextField idS = new TextField("","id");
         TextField name = new TextField("","nom");
-
+        Button btnDashboard = new Button("Go back Dashboard");
+        btnDashboard.addActionListener(e-> previous.showBack());
         Button btn = new Button("update");
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) { 
@@ -45,7 +46,7 @@ public class UpdateEvent extends Form {
 
         }
         });
-        addAll(idS,name,btn);    
+        addAll(idS,name,btn,btnDashboard);    
     }
 
    
