@@ -39,6 +39,7 @@ import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.util.Resources;
 import com.symbiose.GestionEvents.gui.HomeForm;
+import com.symbiose.GestionMatchs.gui.GameForm;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -136,7 +137,7 @@ public class SideMenuBaseForm extends Form {
     }
 
     protected void showTasks(Resources res) {
-//        new TasksForm(res).show();
+        new GameForm(res).show();
     }
 
     protected void showSettingsForm(Resources res) {
