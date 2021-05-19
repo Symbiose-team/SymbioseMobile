@@ -61,6 +61,19 @@ public class ServiceEvent {
         return true;
     }
     
+    public boolean joinEvent(Event ev){
+        
+        String url = Statics.BASE_URL+"event/join/"+ev.getId();
+        req.setUrl(url);
+        
+        req.addResponseListener((e)->{
+            String str = new String(req.getResponseData());
+            System.out.println("data ="+str);
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return true;
+    }
+    
     //update event
     public void updateReponse(Event rep) {
      
@@ -106,7 +119,7 @@ public class ServiceEvent {
             for(Map<String,Object> obj : list){
                 Event t = new Event();
                 
-                float id = Float.parseFloat(obj.get("id").toString());
+                int id = (int) Float.parseFloat(obj.get("id").toString());
                         
                 String name = obj.get("Name").toString();
                         
@@ -115,14 +128,14 @@ public class ServiceEvent {
                 float numRemaining = Float.parseFloat(obj.get("NumRemaining").toString());
                         
                 String type = obj.get("Type").toString();
+                
                              
                 t.setId((int)id);
                 t.setName(name);
-                //t.setNumParticipants((int)numParticip);
-                //t.setNumRemaining((int)numRemaining);
+                t.setNumParticipants((int)numParticip);
+                t.setNumRemaining((int)numRemaining);
                 t.setType(type);
 
-                //Ajouter la tâche extraite de la réponse Json à la liste
                 events.add(t);
             }
             
@@ -162,12 +175,12 @@ public class ServiceEvent {
         Map n = (Map) d.get(0);
         System.out.println(n);
         
-        float id = Float.parseFloat(n.get("id").toString());
+        int id = Integer.parseInt(n.get("id").toString());
         int numParticip = (int) Float.parseFloat(n.get("NumParticipants").toString());
         int numRemaining = (int) Float.parseFloat(n.get("NumRemaining").toString());
         int State = (int) Float.parseFloat(n.get("State").toString());
 
-        ev.setId((int) id);
+        ev.setId(id);
         ev.setName(n.get("Name").toString());
         ev.setNumParticipants(numParticip);
         ev.setNumRemaining(numRemaining);

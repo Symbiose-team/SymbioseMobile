@@ -76,13 +76,13 @@ public class DetailsEvent extends Form{
                     String type = ev.getType();
                     int num_participant = ev.getNumParticipants();
                     int num_remaining = ev.getNumRemaining();
-                    int state = ev.getState();
+                    //int state = ev.getState();
                     
                     addButtonBottom("Name: " + ev_name, 0x5ae29d, true);
                     addButtonBottom("Lastname: " + type, 0x5ae29d, true);
                     addButtonBottom("num_participant: " + num_participant, 0x5ae29d, true);
                     addButtonBottom("num_remaining: " + num_remaining, 0x5ae29d, true);
-                    addButtonBottom("State: " + state, 0x5ae29d, true);
+                    //addButtonBottom("State: " + state, 0x5ae29d, true);
 
                 }
             }
