@@ -5,8 +5,8 @@
     To learn more about Codename One go to https://www.codenameone.com/
     -->
         
-    <project name="Symbiose" default="default" basedir=".">
-    <description>Builds, tests, and runs the project Symbiose.</description>
+    <project name="OmniMan" default="default" basedir=".">
+    <description>Builds, tests, and runs the project OmniMan.</description>
     <import file="nbproject/build-impl.xml"/>
     <property file="codenameone_settings.properties"/>
     <property name="automated" value="false" />
