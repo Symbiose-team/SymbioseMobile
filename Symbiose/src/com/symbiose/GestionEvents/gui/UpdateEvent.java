@@ -5,6 +5,7 @@
  */
 package com.symbiose.GestionEvents.gui;
 
+import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
 import com.codename1.ui.Dialog;
@@ -48,12 +49,13 @@ public class UpdateEvent extends Form {
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) { 
                 
-            if (name.getText()== null){
+            if (name.getText()== null || (tfType.getText().length()==0)){
                     Dialog.show("Alert","Please fill all the fields", new Command("OK"));
                 }
                 else
                 {
-                    Event event = new Event(Integer.parseInt((idM)),name.getText());                
+                    SimpleDateFormat format = new SimpleDateFormat();  
+                    Event event = new Event(Integer.parseInt((idM)),name.getText(),format.format(date.getDate()),tfType.getText());                
                     ServiceEvent.getInstance().updateReponse(event);
                     Dialog.show("Success","Connection accepted", new Command("OK"));
                     new List2EventForm(previous).show();
@@ -62,7 +64,8 @@ public class UpdateEvent extends Form {
         });
         btncancel.addActionListener(e-> new List2EventForm(previous).show());
 
-        addAll(name,btn,btncancel);    
+        addAll(name, tfType,
+                date, btn,btncancel);    
     }
 
    

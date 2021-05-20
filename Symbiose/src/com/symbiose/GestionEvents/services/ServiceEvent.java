@@ -83,7 +83,7 @@ public class ServiceEvent {
     public void updateReponse(Event rep) {
      
             ConnectionRequest con = new ConnectionRequest();// création d'une nouvelle demande de connexion
-            con.setUrl("http://localhost:8000/Event/put/" +rep.getId()+ "/" +rep.getName()) ;// Insertion de l'URL de notre demande de connexion     
+            con.setUrl("http://localhost:8000/Event/put/" +rep.getId()+ "/" +rep.getName()+ "/" +rep.getDate()+ "/" +rep.getType()) ;// Insertion de l'URL de notre demande de connexion     
             NetworkManager.getInstance().addToQueueAndWait(con);// Ajout de notre demande de connexion à la file d'attente du NetworkManager
             String data = new String(con.getResponseData());
             JSONParser j = new JSONParser();
