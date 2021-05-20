@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2016, Codename One
  *
@@ -19,6 +20,7 @@
 package com.symbiose.Utils;
 
 
+import com.symbiose.GestionFields.gui.HomeFieldForm;
 import com.symbiose.GestionUsers.gui.Dashboard;
 
 import com.symbiose.GestionUsers.entities.User;
@@ -39,6 +41,7 @@ import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.util.Resources;
+import com.symbiose.GestionEvents.gui.HomeForm;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -48,7 +51,7 @@ import java.util.Map;
  *
  * @author Shai Almog
  */
-public abstract class SideMenuBaseForm extends Form {
+public class SideMenuBaseForm extends Form {
 
     userService u = new userService();
 
@@ -71,7 +74,7 @@ public abstract class SideMenuBaseForm extends Form {
 
         User us = u.profile();
         String image = us.getPicture();
-                String firstname = us.getFirst_name();
+        String firstname = us.getFirst_name();
 
         EncodedImage placeholder = EncodedImage.createFromImage(res.getImage("Image6.png"), false);
 
@@ -89,7 +92,7 @@ public abstract class SideMenuBaseForm extends Form {
         getToolbar().addComponentToSideMenu(sidemenuTop);
         // getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ARROW_BACK, e -> goBack(res, new Form()));
         getToolbar().addMaterialCommandToSideMenu("  Dashboard", FontImage.MATERIAL_DASHBOARD, e -> showDashboard(res));
-        getToolbar().addMaterialCommandToSideMenu("  Products", FontImage.MATERIAL_VIEW_LIST, e -> showProjects(res));
+        getToolbar().addMaterialCommandToSideMenu("  Fields", FontImage.MATERIAL_VIEW_LIST, e -> showProjects(res));
         getToolbar().addMaterialCommandToSideMenu("  Calendar", FontImage.MATERIAL_CALENDAR_TODAY, e -> showCalendar(res));
         getToolbar().addMaterialCommandToSideMenu("  Matches", FontImage.MATERIAL_ACCESS_TIME, e -> showTasks(res));
         getToolbar().addMaterialCommandToSideMenu("  Events", FontImage.MATERIAL_TRENDING_UP, e -> showActivities(res));
@@ -110,6 +113,7 @@ public abstract class SideMenuBaseForm extends Form {
     }
 
     protected void showProjects(Resources res) {
+        new HomeFieldForm(res).show();
 //        new ProjectsForm(res, this).show();
 
         /* DropboxAccess.setConsumerKey("4wwgb8kt70pr31r");
@@ -145,6 +149,6 @@ public abstract class SideMenuBaseForm extends Form {
     }
 
     protected void showActivities(Resources res) {
-//        new ActivitiesForm(res).show();
+        new HomeForm(res).show();
     }
 }
