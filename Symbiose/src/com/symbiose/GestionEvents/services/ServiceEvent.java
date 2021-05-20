@@ -12,6 +12,8 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.events.ActionListener;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.symbiose.GestionEvents.entities.Event;
 import com.symbiose.GestionUsers.entities.User;
 import static com.symbiose.GestionUsers.services.userService.getResponse;
@@ -22,6 +24,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import javafx.scene.paint.Material;
+import org.json.JSONObject;
 
 /**
  *
@@ -30,6 +34,7 @@ import java.util.Map;
 public class ServiceEvent {
     public ArrayList<Event> events;
     private ConnectionRequest req;
+    private Event event;
     public static ServiceEvent instance = null  ;
     public boolean resultOK;
     
@@ -61,9 +66,9 @@ public class ServiceEvent {
         return true;
     }
     
-    public boolean joinEvent(Event ev){
+    public boolean joinEvent(String id){
         
-        String url = Statics.BASE_URL+"event/join/"+ev.getId();
+        String url = Statics.BASE_URL+"event/join/"+id;
         req.setUrl(url);
         
         req.addResponseListener((e)->{
@@ -90,7 +95,7 @@ public class ServiceEvent {
     }
     
     //delete event
-    public boolean deleteEvent(int id){
+    public boolean deleteEvent(String id){
           
         //http://127.0.0.1:8000/addEventJSON/new?name=fffffffffffffff&num_participants=100&num_remaining=100&type=football&state=1
         String url = Statics.BASE_URL+"deleteEventJSON/"+id;
@@ -166,27 +171,32 @@ public class ServiceEvent {
         return events;
     }
     
-    public Event getEvent(int idEvent){
-        
-        Event ev = new Event();
-        Map m = getResponse("EventJSON/"+idEvent);
-        ArrayList d = (ArrayList) m.get("root");
-        System.out.println(d);
-        Map n = (Map) d.get(0);
-        System.out.println(n);
-        
-        int id = Integer.parseInt(n.get("id").toString());
-        int numParticip = (int) Float.parseFloat(n.get("NumParticipants").toString());
-        int numRemaining = (int) Float.parseFloat(n.get("NumRemaining").toString());
-        int State = (int) Float.parseFloat(n.get("State").toString());
-
-        ev.setId(id);
-        ev.setName(n.get("Name").toString());
-        ev.setNumParticipants(numParticip);
-        ev.setNumRemaining(numRemaining);
-        ev.setType(n.get("Type").toString());
-        ev.setState(State);
-       
-        return ev;  
+    public Event getOneEventById(String id){
+        String url = Statics.BASE_URL+"EventJSON/"+id;
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                System.out.println("get by"+id);
+                System.out.println(new String(req.getResponseData()));
+                event = parseEvent(new String(req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return event;
     }
+     public Event parseEvent(String jsonText){
+            JSONParser j = new JSONParser();
+            Event m = new Event();             
+            String str = jsonText;
+            JSONObject jsonObject = new JSONObject(str);
+            System.out.println(jsonObject);
+            GsonBuilder builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            Gson gson = builder.create();
+            m = gson.fromJson(str,Event.class);
+        return m;
+     }
 }

@@ -54,7 +54,6 @@ public class HomeForm extends Form{
     
     static Map g;
     Form current;
-    private Resources theme;
 
     public HomeForm(Resources res){
         
@@ -62,13 +61,12 @@ public class HomeForm extends Form{
         setTitle("Home");
         setLayout(BoxLayout.y());
         Toolbar.setGlobalToolbar(true);
-        theme = UIManager.initFirstTheme("/theme_events");
-        Toolbar.setGlobalToolbar(true);
 
         
         add(new Label("Choose an option"));
         Button btnAddEvent = new Button("Add event");
         Button btnListEvents = new Button("List events");
+        Button btnList2Events = new Button("List 2 events");
         Button btnDeleteEvents = new Button("Delete events");
         Button btnDashboard = new Button("Go back Dashboard");
         Button btnDetails = new Button("Details event");
@@ -78,14 +76,10 @@ public class HomeForm extends Form{
 
         
         btnAddEvent.addActionListener(e-> new AddEventForm(current).show());
-        btnListEvents.addActionListener(e-> new ListEventsForm(current).show());
-        btnDeleteEvents.addActionListener(e-> new DeleteEventForm(current).show());
+        btnList2Events.addActionListener(e-> new List2EventForm(current).show());
         btnDashboard.addActionListener(e-> new Dashboard(res).show());
-        btnDetails.addActionListener(e-> new DetailsEvent(current).show());
-        btnUpdate.addActionListener(e-> new UpdateEvent(current).show());
         ChartsApi.addActionListener(e-> new ChartDemosForm().show());
-        //getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> new Dashboard(res).show());
-        addAll(btnAddEvent,btnListEvents,btnDetails,btnUpdate,btnDeleteEvents,ChartsApi,btnDashboard);
+        addAll(btnAddEvent,btnList2Events,ChartsApi,btnDashboard);
         
         
     }

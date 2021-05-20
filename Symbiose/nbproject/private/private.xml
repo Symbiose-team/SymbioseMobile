@@ -13,10 +13,12 @@
             <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/Utils/Statics.java</file>
         </group>
         <group>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/DeleteEventForm.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/DetailsEvent.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/ListEventsForm.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/services/ServiceEvent.java</file>
+            <file>file:/F:/Coding/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/entities/User.java</file>
+            <file>file:/F:/Coding/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/LoginForm.java</file>
+            <file>file:/F:/Coding/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/Dashboard.java</file>
+            <file>file:/F:/Coding/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/AddEventForm.java</file>
+            <file>file:/F:/Coding/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/services/ServiceEvent.java</file>
+            <file>file:/F:/Coding/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/entities/Event.java</file>
         </group>
     </open-files>
 </project-private>

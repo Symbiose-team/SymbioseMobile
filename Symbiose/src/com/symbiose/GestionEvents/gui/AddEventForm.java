@@ -13,6 +13,7 @@ import com.codename1.ui.Display;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.TextField;
+import com.codename1.ui.Toolbar;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
@@ -31,7 +32,10 @@ public class AddEventForm extends Form{
     public AddEventForm(Form previous) {
         setTitle("Add a new Event");
         setLayout(BoxLayout.y());
-        
+        Toolbar tb = new Toolbar();
+        setToolbar(tb);
+        tb.setUIID("Container");
+        tb.setBackCommand("", e -> previous.showBack());
         TextField tfName = new TextField("","Event name");
         //TextField tfSupplier = new TextField("","Supplier");
         
