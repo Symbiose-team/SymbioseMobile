@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GestionFields.gui;
+package com.symbiose.GestionFields.gui;
 
 import com.codename1.location.GeofenceListener;
 import com.codename1.notifications.LocalNotification;

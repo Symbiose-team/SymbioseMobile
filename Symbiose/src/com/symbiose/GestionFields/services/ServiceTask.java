@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GestionFields.services;
+package com.symbiose.GestionFields.services;
 
 import com.codename1.components.InfiniteProgress;
 import com.codename1.components.MultiButton;
@@ -25,9 +25,9 @@ import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
-import GestionFields.gui.GeofenceListenerImpl;
+import com.symbiose.GestionFields.gui.GeofenceListenerImpl;
 
-import GestionFields.entities.field;
+import com.symbiose.GestionFields.entities.field;
 import com.symbiose.Utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GestionFields.gui;
+package com.symbiose.GestionFields.gui;
 
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
@@ -14,10 +14,10 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
-import GestionFields.entities.field;
+import com.symbiose.GestionFields.entities.field;
 import static java.lang.Float.parseFloat;
 import java.util.Date;
-import GestionFields.services.ServiceTask;
+import com.symbiose.GestionFields.services.ServiceTask;
 
 /**
  *

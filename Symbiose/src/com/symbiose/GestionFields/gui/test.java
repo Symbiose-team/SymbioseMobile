@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GestionFields.gui;
+package com.symbiose.GestionFields.gui;
 
 import static com.codename1.charts.compat.Paint.Join.MITER;
 import com.codename1.components.ImageViewer;
@@ -25,10 +25,10 @@ import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.table.TableLayout;
 import com.codename1.ui.util.Resources;
-import GestionFields.entities.field;
+import com.symbiose.GestionFields.entities.field;
 import static java.util.Collections.list;
 import java.util.List;
-import GestionFields.services.ServiceTask;
+import com.symbiose.GestionFields.services.ServiceTask;
 public class test extends Form{
     private List<field> listprom;
     private Form form ;

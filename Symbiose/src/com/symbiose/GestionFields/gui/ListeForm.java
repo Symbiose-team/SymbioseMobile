@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GestionFields.gui;
+package com.symbiose.GestionFields.gui;
 
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
-import GestionFields.services.ServiceTask;
+import com.symbiose.GestionFields.services.ServiceTask;
 
 /**
  *

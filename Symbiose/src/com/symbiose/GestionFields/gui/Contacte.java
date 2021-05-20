@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GestionFields.gui;
+package com.symbiose.GestionFields.gui;
 
 import com.codename1.components.InfiniteProgress;
 import com.codename1.components.MultiButton;
@@ -24,9 +24,9 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
-import GestionFields.entities.field;
+import com.symbiose.GestionFields.entities.field;
 import java.util.Date;
-import GestionFields.services.ServiceTask;
+import com.symbiose.GestionFields.services.ServiceTask;
 
 /**
  *
