@@ -17,7 +17,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.symbiose.GestionFields.entities.field;
 import static java.lang.Float.parseFloat;
 import java.util.Date;
-import com.symbiose.GestionFields.services.ServiceTask;
+import com.symbiose.GestionFields.services.ServiceField;
 
 /**
  *
@@ -52,9 +52,9 @@ public class addTaskForm extends Form {
                     try {
                        
                         Date date = new Date(22/12/1998);
-                        field t = new field( tfName.getText(), 5584, price.getText(),"ssdsd","dss",date,date);
+                        field t = new field(tfName.getText(),5584,price.getText(),"ssdsd","dss",date,date);
                         
-                        if( ServiceTask.getInstance().addTask(t))
+                        if( ServiceField.getInstance().addTask(t))
                             Dialog.show("Success","Connection accepted",new Command("OK"));
                         else
                             Dialog.show("ERROR", "Server error", new Command("OK"));

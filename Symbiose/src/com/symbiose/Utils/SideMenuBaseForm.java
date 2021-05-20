@@ -111,7 +111,7 @@ public class SideMenuBaseForm extends Form {
     }
 
     protected void showProjects(Resources res) {
-        new HomeFieldForm().show();
+        new HomeFieldForm(res).show();
 //        new ProjectsForm(res, this).show();
 
         /* DropboxAccess.setConsumerKey("4wwgb8kt70pr31r");

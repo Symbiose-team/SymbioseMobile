@@ -16,7 +16,7 @@ import com.symbiose.GestionFields.entities.field;
 
 import static java.lang.Float.parseFloat;
 
-import com.symbiose.GestionFields.services.ServiceTask;
+import com.symbiose.GestionFields.services.ServiceField;
 
 /**
  *
@@ -38,7 +38,7 @@ public class update extends Form {
          if (name.getText()!= null){
 
             field terrain = new field((int) parseFloat(idS.getText()),name.getText());
-          ServiceTask.getInstance().updateReponse(terrain); }
+          ServiceField.getInstance().updateReponse(terrain); }
     
 
         }

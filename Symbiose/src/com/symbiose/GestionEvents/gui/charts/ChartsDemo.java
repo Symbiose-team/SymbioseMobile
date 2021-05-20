@@ -6,6 +6,7 @@ import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
+import com.symbiose.GestionEvents.gui.charts.ChartDemosForm;
 import java.io.IOException;
 
 public class ChartsDemo {

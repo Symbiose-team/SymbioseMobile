@@ -13,12 +13,27 @@
             <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/Utils/Statics.java</file>
         </group>
         <group>
-            <file>file:/F:/Coding/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/entities/User.java</file>
-            <file>file:/F:/Coding/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/LoginForm.java</file>
-            <file>file:/F:/Coding/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/Dashboard.java</file>
-            <file>file:/F:/Coding/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/AddEventForm.java</file>
-            <file>file:/F:/Coding/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/services/ServiceEvent.java</file>
-            <file>file:/F:/Coding/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/entities/Event.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/charts/ChartsDemo.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/charts/IDemoChart.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/HomeForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/AddEventForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/Utils/SideMenuBaseForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/build.xml</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionFields/entities/field.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/List2EventForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/charts/AbstractDemoChart.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionFields/gui/addTaskForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/services/ServiceEvent.java</file>
+            <file>jar:file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/lib/CodenameOne_SRC.zip!/com/codename1/ui/events/ActionListener.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionFields/gui/ListeForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionFields/services/ServiceField.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/entities/Event.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/Utils/Statics.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/charts/SalesBarChart.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/charts/ChartDemosForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/charts/ChartsInBoxLayout.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionFields/gui/HomeFieldForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/Symbiose.java</file>
         </group>
     </open-files>
 </project-private>

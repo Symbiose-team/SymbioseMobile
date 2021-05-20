@@ -43,27 +43,8 @@ public class ChartDemosForm extends Form {
     }
     
     ListOption[] options = new ListOption[]{
-        /*
-        new ListOption(AverageCubicTemperatureChart.class, "Avg. Cubic Temperature"),
-        //new ListOption(AverageTemperatureChart.class, "Avg. Temperature"),
-        new ListOption(BudgetDoughnutChart.class, "Budget Doughnut"),
-        new ListOption(BudgetPieChart.class, "Budget Pie Chart"),
-        new ListOption(CombinedTemperatureChart.class, "Combined Temperature"),
-        new ListOption(MultipleTemperatureChart.class, "Multiple Temperature"),
-        new ListOption(ProjectStatusBubbleChart.class, "Project Status Bubble Chart"),
-        new ListOption(SalesComparisonChart.class, "Sales Comparison Chart"),
-        new ListOption(SalesGrowthChart.class, "Sales Growth Chart"),
-        new ListOption(SalesStackedBarChart.class, "Sales Stacked Bar Chart"),
-        new ListOption(ScatterChart.class, "Scatter Chart"),
-        new ListOption(SensorValuesChart.class, "Sensor Values Chart"),
-        new ListOption(TemperatureChart.class, "Temperature Chart"),
-        new ListOption(TrigonometricFunctionsChart.class, "Trigonometric Functions Chart"),
-        new ListOption(WeightDialChart.class, "Weight Dial Chart"),
-        new ListOption(ChartsInBoxLayout.class, "Vertical Box Layout"),
-        new ListOption(MetricsStackedBarChart.class, "Metrics Stacked Bar Chart")
-        */
-                new ListOption(SalesBarChart.class, "Events chart"),
-
+        
+        new ListOption(SalesBarChart.class, "Event Chart"),
     };
     
     public ChartDemosForm(){

@@ -28,7 +28,7 @@ import com.codename1.ui.util.Resources;
 import com.symbiose.GestionFields.entities.field;
 import static java.util.Collections.list;
 import java.util.List;
-import com.symbiose.GestionFields.services.ServiceTask;
+import com.symbiose.GestionFields.services.ServiceField;
 public class test extends Form{
     private List<field> listprom;
     private Form form ;
@@ -45,7 +45,7 @@ public class test extends Form{
         
         
 //        SpanLabel sp = new SpanLabel();
-        List<field> list = ServiceTask.getInstance().getAllTasks();
+        List<field> list = ServiceField.getInstance().getAllTasks();
         
         for (field p : list){
         

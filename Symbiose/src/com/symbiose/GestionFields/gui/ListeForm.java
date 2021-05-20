@@ -8,7 +8,7 @@ package com.symbiose.GestionFields.gui;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
-import com.symbiose.GestionFields.services.ServiceTask;
+import com.symbiose.GestionFields.services.ServiceField;
 
 /**
  *
@@ -18,7 +18,7 @@ public class ListeForm extends Form {
     public ListeForm (Form dds){
         setTitle("Liste de terrain ");
          SpanLabel sp = new SpanLabel();
-        sp.setText(ServiceTask.getInstance().getAllTasks().toString());
+        sp.setText(ServiceField.getInstance().getAllTasks().toString());
         add(sp);
            getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
                 , e-> dds.showBack()); // Revenir vers l'interface précédente

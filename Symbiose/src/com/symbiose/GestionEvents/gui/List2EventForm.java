@@ -44,8 +44,15 @@ public class List2EventForm extends Form{
         Toolbar tb = new Toolbar();
         setToolbar(tb);
         tb.setUIID("Container");
-        tb.setBackCommand("", e -> previous.showBack());
+        tb.setBackCommand("back", e -> previous.showBack());
+        /*
+        Button btnAddEvent = new Button("Add event");
+        btnAddEvent.addActionListener(e-> new AddEventForm(current).show());
+        Container cnt = new Container(BoxLayout.x());
         
+        cnt.add(btnAddEvent);
+        add(cnt);
+        */
         for (Event m :events ) {
                     
                 Container cnt1 = new Container(BoxLayout.y());
@@ -66,21 +73,11 @@ public class List2EventForm extends Form{
                 cnt1.add(SLnom);
                 cnt1.add(SLType);
                 cnt1.add(SLnumberRemaining);
-                //cnt1.add(show);
                 cnt1.add(update);
                 cnt1.add(delete);
                 cnt1.add(join);
                 cnt1.add(separator);
                 cnt2.add(cnt1);
-                
-                /*
-                show.addActionListener(new ActionListener(){
-                    @Override
-                    public void actionPerformed(ActionEvent evt){
-                        new ShowOneEvent(current,show.getUIID()).show();
-                    }
-                });
-                */
                 
                 update.addActionListener(new ActionListener(){
                     @Override

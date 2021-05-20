@@ -15,7 +15,7 @@ import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.symbiose.GestionFields.entities.field;
-import com.symbiose.GestionFields.services.ServiceTask;
+import com.symbiose.GestionFields.services.ServiceField;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
@@ -42,7 +42,7 @@ public class delete extends Form{
          if (ts!= null){
         int number= (int)Float.parseFloat(ts.getText());
 
-         ServiceTask.getInstance().deleteReponse(number); }
+         ServiceField.getInstance().deleteReponse(number); }
     
 
         }
