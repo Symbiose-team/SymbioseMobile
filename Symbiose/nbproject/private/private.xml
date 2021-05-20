@@ -6,12 +6,8 @@
         <group/>
         <group name="PI-Mobile">
             <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/editProfileForm.java</file>
-            <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/WalkthruForm.java</file>
-            <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/RegisterForm.java</file>
             <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/settingsForm.java</file>
-            <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/Dashboard.java</file>
             <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/services/userService.java</file>
-            <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/Utils/Statics.java</file>
         </group>
     </open-files>
 </project-private>

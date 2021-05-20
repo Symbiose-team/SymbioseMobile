@@ -25,6 +25,7 @@ import com.symbiose.GestionUsers.entities.User;
 import com.symbiose.GestionUsers.gui.LoginForm;
 import com.symbiose.GestionUsers.gui.settingsForm;
 import com.symbiose.GestionUsers.services.userService;
+import com.symbiose.GestionCommunication.gui.Accueil;
 import com.codename1.components.ToastBar;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
@@ -93,6 +94,7 @@ public abstract class SideMenuBaseForm extends Form {
         getToolbar().addMaterialCommandToSideMenu("  Matches", FontImage.MATERIAL_ACCESS_TIME, e -> showTasks(res));
         getToolbar().addMaterialCommandToSideMenu("  Events", FontImage.MATERIAL_TRENDING_UP, e -> showActivities(res));
         getToolbar().addMaterialCommandToSideMenu("  Teams", FontImage.MATERIAL_GROUP, e -> showTeamForm(res));
+        getToolbar().addMaterialCommandToSideMenu("  Communication", FontImage.MATERIAL_COMMENT, e -> showTeamForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Account Settings", FontImage.MATERIAL_SETTINGS, e -> showSettingsForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new LoginForm(res).show());
 
@@ -131,7 +133,7 @@ public abstract class SideMenuBaseForm extends Form {
     }
 
     protected void showTeamForm(Resources res) {
-//        new TeamForm(res, this).show();
+        new Accueil().getF().show();
     }
 
     protected void showTasks(Resources res) {
