@@ -8,6 +8,7 @@ package com.symbiose.GestionEvents.gui;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
+import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
@@ -15,6 +16,7 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.spinner.Picker;
 import com.codename1.ui.util.Resources;
 import com.symbiose.GestionEvents.entities.Event;
@@ -34,6 +36,10 @@ public class UpdateEvent extends Form {
         date.setType(Display.PICKER_TYPE_DATE_AND_TIME);
         TextField tfType = new TextField("","Type");
         
+        Container maincnt = new Container(BoxLayout.y());
+        Container cnt1 = new Container(BoxLayout.y());
+        Container cnt2 = new Container(BoxLayout.x());
+
         Toolbar tb = new Toolbar();
         setToolbar(tb);
         tb.setUIID("Container");
@@ -64,8 +70,10 @@ public class UpdateEvent extends Form {
         });
         btncancel.addActionListener(e-> new List2EventForm(previous).show());
 
-        addAll(name, tfType,
-                date, btn,btncancel);    
+        
+        cnt1.addAll(name,tfType,date);
+        cnt2.addAll(btn,btncancel);
+        maincnt.addAll(cnt1,cnt2);
     }
 
    

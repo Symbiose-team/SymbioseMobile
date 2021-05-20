@@ -62,7 +62,7 @@ public class ChartDemosForm extends Form {
         new ListOption(ChartsInBoxLayout.class, "Vertical Box Layout"),
         new ListOption(MetricsStackedBarChart.class, "Metrics Stacked Bar Chart")
         */
-                new ListOption(SalesBarChart.class, "Sales Bar Chart"),
+                new ListOption(SalesBarChart.class, "Events chart"),
 
     };
     

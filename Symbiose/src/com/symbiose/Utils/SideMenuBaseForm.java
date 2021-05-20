@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2016, Codename One
  *
@@ -19,6 +20,7 @@
 package com.symbiose.Utils;
 
 
+import GestionFields.gui.HomeFieldForm;
 import com.symbiose.GestionUsers.gui.Dashboard;
 
 import com.symbiose.GestionUsers.entities.User;
@@ -89,7 +91,7 @@ public class SideMenuBaseForm extends Form {
         getToolbar().addComponentToSideMenu(sidemenuTop);
         // getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ARROW_BACK, e -> goBack(res, new Form()));
         getToolbar().addMaterialCommandToSideMenu("  Dashboard", FontImage.MATERIAL_DASHBOARD, e -> showDashboard(res));
-        getToolbar().addMaterialCommandToSideMenu("  Products", FontImage.MATERIAL_VIEW_LIST, e -> showProjects(res));
+        getToolbar().addMaterialCommandToSideMenu("  Fields", FontImage.MATERIAL_VIEW_LIST, e -> showProjects(res));
         getToolbar().addMaterialCommandToSideMenu("  Calendar", FontImage.MATERIAL_CALENDAR_TODAY, e -> showCalendar(res));
         getToolbar().addMaterialCommandToSideMenu("  Matches", FontImage.MATERIAL_ACCESS_TIME, e -> showTasks(res));
         getToolbar().addMaterialCommandToSideMenu("  Events", FontImage.MATERIAL_TRENDING_UP, e -> showActivities(res));
@@ -109,6 +111,7 @@ public class SideMenuBaseForm extends Form {
     }
 
     protected void showProjects(Resources res) {
+        new HomeFieldForm().show();
 //        new ProjectsForm(res, this).show();
 
         /* DropboxAccess.setConsumerKey("4wwgb8kt70pr31r");
