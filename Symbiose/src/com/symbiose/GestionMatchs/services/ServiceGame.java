@@ -12,8 +12,11 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.events.ActionListener;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.symbiose.GestionMatchs.entities.Game;
 import com.symbiose.Utils.Statics;
 import java.io.IOException;
@@ -22,8 +25,11 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import org.json.JSONObject;
+import com.symbiose.Utils.Session;
 
 /**
  *
@@ -58,7 +64,8 @@ public class ServiceGame {
     }
     
     public ArrayList<Game> games;
-    
+    private Game game;
+
     
     
     
@@ -66,7 +73,7 @@ public class ServiceGame {
     public boolean resultOK;
     private ConnectionRequest req;
 
-    private ServiceGame() {
+    public ServiceGame() {
          req = new ConnectionRequest();
     }
 
@@ -77,25 +84,56 @@ public class ServiceGame {
         return instance;
     }
 
-    public boolean addGame(Game g) {
-        String url = Statics.BASE_URL + "addGameJSON/" + g.getName(); //création de l'URL
-        req.setUrl(url);// Insertion de l'URL de notre demande de connexion
-        req.addResponseListener(new ActionListener<NetworkEvent>() {
-            @Override
-            public void actionPerformed(NetworkEvent evt) {
-                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
-                req.removeResponseListener(this); //Supprimer cet actionListener
-                /* une fois que nous avons terminé de l'utiliser.
-                La ConnectionRequest req est unique pour tous les appels de 
-                n'importe quelle méthode du Service task, donc si on ne supprime
-                pas l'ActionListener il sera enregistré et donc éxécuté même si 
-                la réponse reçue correspond à une autre URL(get par exemple)*/
-                
-            }
+    public boolean addGame(Game g){
+          
+        String url = Statics.BASE_URL+"addGameJSON/new?name="+g.getName()+"&time="+g.getTime();
+        System.out.println(url);
+        req.setUrl(url);
+       
+        req.addResponseListener((e)->{
+            String str = new String(req.getResponseData());
+            System.out.println("data ="+str);
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
-        return resultOK;
+        return true;
     }
+    
+    
+    public boolean deleteGame(String id){
+        Session s = new Session();
+        System.out.println(s.u.getId());
+     
+        
+        String url = Statics.BASE_URL+"deleteGameJSON/"+id;
+        System.out.println(url);
+        req.setUrl(url);
+       
+        req.addResponseListener((e)->{
+            String str = new String(req.getResponseData());
+            System.out.println("data ="+str);
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return true;
+    }
+    
+          public void updateReponse(Game rep) {
+     
+            ConnectionRequest con = new ConnectionRequest();// création d'une nouvelle demande de connexion
+         con.setUrl("http://localhost:8000/updateGameJSON/"+rep.getId()+"?name="+rep.getName()+"&time="+rep.getTime()) ;
+              //      + "addGameJSON/new?name="+g.getName()+"&time="+g.getTime()
+            NetworkManager.getInstance().addToQueueAndWait(con);
+            String data = new String(con.getResponseData());
+            JSONParser j = new JSONParser();
+        try {
+            System.out.println(j.parseJSON(new CharArrayReader(data.toCharArray())));
+        } catch (IOException ex) {
+        
+        }
+    
+    }
+        
+        
+        
 
     public ArrayList<Game> parseTasks(String jsonText){
         try {
@@ -137,7 +175,10 @@ public class ServiceGame {
                 float id = Float.parseFloat(obj.get("id").toString());
                 t.setId((int)id);
                 t.setName(obj.get("name").toString());
-              //  t.setTime(obj.get("time").toString());
+                t.setTime(obj.get("time").toString());
+                //String datestring=(new SimpleDateFormat("yyyy-MM-dd")).format(t.getTime());
+               // t.setTime((Date) obj.get(datestring));
+              //  System.out.println(datestring);
                 //Ajouter la tâche extraite de la réponse Json à la liste
                 games.add(t);
             }
@@ -154,25 +195,49 @@ public class ServiceGame {
         return games;
     }
     
-    public Game getAllGames(){
-       Game g = new Game();
-        Map m = getResponse("AllGames");
-//        +Session.u.getId()
-        ArrayList d = (ArrayList) m.get("root");
-        System.out.println(d);
-        Map n = (Map) d.get(0);
-        System.out.println(n);
-        
-        if (n.equals("false")) {
-            return null;
-        } else {
-
-            int id = (int) Float.parseFloat(n.get("id").toString());
-
-            return g;
-
-        }
-        
+   
+    public ArrayList<Game> getAllGames(){
+        String url = "http://localhost:8000/AllGames";
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                games = parseTasks(new String(req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return games;
+    }
+    
+    
+      public Game getOneEventById(String id){
+        String url = Statics.BASE_URL+"GameJSON/"+id;
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                game = parseEvent(new String(req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return game;
+    }
+      
+         public Game parseEvent(String jsonText){
+            JSONParser j = new JSONParser();
+            Game m = new Game();             
+            String str = jsonText;
+            JSONObject jsonObject = new JSONObject(str);
+            GsonBuilder builder = new GsonBuilder();
+            builder.setPrettyPrinting();
+            Gson gson = builder.create();
+            m = gson.fromJson(str,Game.class);
+        return m;
+         }
       /*  req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -187,5 +252,5 @@ public class ServiceGame {
       
     }*/
 }
-}
+
 

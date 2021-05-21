@@ -17,16 +17,13 @@ import com.symbiose.GestionMatchs.services.ServiceGame;
  * @author chedly
  */
 public class ListGameForm extends Form{
-
-    public ListGameForm(Form previous) {
+public ListGameForm(Form previous) {
         setTitle("List Games");
         
-        TextField sp = new TextField();
-        
+        SpanLabel sp = new SpanLabel();
         sp.setText(ServiceGame.getInstance().getAllGames().toString());
         add(sp);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
-    
     
 }

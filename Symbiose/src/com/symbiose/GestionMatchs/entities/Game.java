@@ -23,15 +23,15 @@ public class Game {
 
     private String name;
 
-    private Date  time;
+    private String  time;
 
 
-    public Game(Integer id, String name, Date time) {
+    public Game(Integer id, String name, String time) {
         this.id = id;
         this.name=name;
         this.time=time;
     }
-    public Game(Integer id, String name, Date time, String owner) {
+    public Game(Integer id, String name, String time, String owner) {
         this.id = id;
         this.name=name;
         this.time=time;
@@ -43,6 +43,13 @@ public class Game {
         this.userid = userid;
 
     }
+    
+     public Game(String name,String time) {
+        this.name=name;
+        this.time = time;
+
+    }
+    
 
     public Game() {
 
@@ -80,22 +87,22 @@ public class Game {
         this.name = name;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return this.time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
-
 
     @Override
     public String toString() {
         return "Game{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", time=" + time +
+                ", name='" + name 
+                +", time'"+time+  
                 '}';
     }
+
 }
 

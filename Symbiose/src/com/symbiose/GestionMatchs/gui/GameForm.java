@@ -11,6 +11,7 @@ import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
+import com.symbiose.GestionUsers.gui.Dashboard;
 
 /**
  *
@@ -29,12 +30,22 @@ public class GameForm extends Form {
         setLayout(BoxLayout.y());
 
         add(new Label("Choose an option"));
+        Button btnDashboard = new Button("Go back Dashboard");
+
         Button btnAddTask = new Button("Add Game");
+        // Button btnUpdate = new Button("Update event");
         Button btnListTasks = new Button("List Games");
 
+        
+        btnDashboard.addActionListener(e-> new Dashboard(res).show());
         btnAddTask.addActionListener(e -> new AddGameForm(current).show());
+        Button extra = new Button("Extra options list");
+
+       //btnUpdate.addActionListener(e -> new UpdateGameForm(current).show());
+        extra.addActionListener(e-> new DeleteGameForm(current).show());
+
         btnListTasks.addActionListener(e -> new ListGameForm(current).show());
-        addAll(btnAddTask, btnListTasks);
+        addAll(btnDashboard,btnAddTask,extra ,btnListTasks);
 
     }
 
