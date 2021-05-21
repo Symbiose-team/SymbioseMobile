@@ -30,6 +30,7 @@ public class AjoutMessage {
     TextField tdesc;
     Button btnajout;
 private Resources theme;
+private Resources res;
 
    
     public AjoutMessage(int id_q) {
@@ -70,7 +71,7 @@ if(Dialog.show("vous voulez envoyer ce message?", "", "oui", "Non")) {
           
           
 varGlobales.setId(id_q);
-                 DetailConver dq=new DetailConver();
+                 DetailConver dq=new DetailConver(res);
   dq.getF().show();
               
         });

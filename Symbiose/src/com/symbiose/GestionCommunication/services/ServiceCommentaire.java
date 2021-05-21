@@ -14,24 +14,26 @@ import com.codename1.ui.events.ActionListener;
 import com.symbiose.GestionCommunication.entities.Publication;
 import com.symbiose.GestionCommunication.entities.Commentaire;
 import com.symbiose.GestionCommunication.gui.varGlobales;
+import com.symbiose.GestionUsers.entities.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import com.symbiose.Utils.Session;
 
 /**
  *
  * @author bhk
  */
 public class ServiceCommentaire { 
-    
+        User u = new User();
         ArrayList<Commentaire>  listc = new ArrayList<>();
 
     
         public void ajoutReponse(Commentaire rep) {
      
             ConnectionRequest con = new ConnectionRequest();// création d'une nouvelle demande de connexion
-            String Url ="http://localhost:8000/AddComment/" + rep.getContenu()+ "/" + rep.getUser_id()+"/"+ rep.getId_quest();// création de l'URL
+            String Url ="http://localhost:8000/AddComment/" + rep.getContenu()+ "/" + Session.u.getId()+"/"+ rep.getId_quest();// création de l'URL
           
             con.setUrl(Url);// Insertion de l'URL de notre demande de connexion     
             NetworkManager.getInstance().addToQueueAndWait(con);// Ajout de notre demande de connexion à la file d'attente du NetworkManager

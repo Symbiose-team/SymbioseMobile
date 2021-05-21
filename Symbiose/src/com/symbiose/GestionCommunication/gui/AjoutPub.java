@@ -12,6 +12,7 @@ import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
 import com.codename1.ui.TextField;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
@@ -35,8 +36,8 @@ public class AjoutPub {
 
       private Resources theme;
 
-    public AjoutPub() {
-                theme = UIManager.initFirstTheme("/theme");
+    public AjoutPub(Resources res) {
+                theme = UIManager.initFirstTheme("/a");
         f = new Form("Ajout de question", new FlowLayout(Component.CENTER));
         tdesc = new TextField("","description");
         btnajout = new Button("ajouter");
@@ -60,9 +61,13 @@ public class AjoutPub {
           ser.ajoutQuestion(q);
          
                 Dialog.show("Succée", " ajouté avec succée!", "Ok", null);
-       AffichageListPublication aff = new AffichageListPublication();
+       AffichageListPublication aff = new AffichageListPublication(res);
        aff.getF().show();
         });
+        
+        f.getToolbar().addCommandToRightBar("Back", null, (ActionListener) ((evt) -> {
+          new Accueil(res).getF().showBack();
+        }));
        
     }
     //n3ayet lel forme hedha f blgetter hedha

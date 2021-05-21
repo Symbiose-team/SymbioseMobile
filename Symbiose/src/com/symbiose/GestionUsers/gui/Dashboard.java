@@ -40,7 +40,7 @@ import com.codename1.ui.layouts.GridLayout;
 public class Dashboard extends SideMenuBaseForm {
 
     private static final int[] COLORS = {0xf8e478, 0x60e6ce, 0x878aee};
-    private static final String[] LABELS = {"Remaining tasks", "Effort"};
+    private static final String[] LABELS = {"Visitors", "Queue"};
     userService u = new userService();
 
     public Dashboard(Resources res) {
@@ -78,12 +78,12 @@ public class Dashboard extends SideMenuBaseForm {
                 new Label("12", "CenterTitle"),
                 new Label("Produits", "CenterSubTitle")
         );
-        remainingTasks.setUIID("RemainingTasks");
+        remainingTasks.setUIID("Remaining");
         Container completedTasks = BoxLayout.encloseY(
                 new Label("32", "CenterTitle"),
                 new Label("Teams", "CenterSubTitle")
         );
-        completedTasks.setUIID("CompletedTasks");
+        completedTasks.setUIID("Completed");
         String name = us.getFirst_name();
         String lastname = us.getLast_name();
         String role = us.getGenre();
@@ -142,7 +142,7 @@ public class Dashboard extends SideMenuBaseForm {
 
         Container enclosure = BorderLayout.south(new ChartComponent(chart)).
                 add(BorderLayout.NORTH, FlowLayout.encloseCenter(
-                        new Label("Burndown Chart :"),
+                        new Label("Chart :"),
                         new Label(LABELS[1], colorCircle(COLORS[0])),
                         new Label(LABELS[0], colorCircle(COLORS[1]))
                 ));
