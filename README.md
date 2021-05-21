@@ -10,13 +10,24 @@
 
 <br/>
 
-[Symbiose] is a **PHP content management system based** on the [Symfony](https://symfony.com/) framework. 
+[Symbiose] is an **application content management system based** on the [Symfony](https://symfony.com/) framework , [CodeNameOne](https://www.codenameone.com/) framework & [JavaFx](https://openjfx.io/) framework. 
 
 <br/>
 
 ## 🚀&nbsp; Installation
 
-//TODO
+*Install **CodenameOne Plugin** on [Netbeans](https://www.codenameone.com/blog/netbeans-plugin-update-center.html) or on [Intellij IDEA](https://plugins.jetbrains.com/plugin/7357-codename-one)
+<br>
+*Libraries needed for the project are :<br>
+    -JAVASE.jar;
+    <br>
+    -CLDC11.jar;
+    <br>
+    -CodeNameOne.jar;
+    <br>
+    -gson-2.8.2.jar;
+    <br>
+    -java-time-backport-1.0.0.jar;
 
 ## ❤️&nbsp; Contributions
 
@@ -37,4 +48,4 @@ The Symbiose content management system is a made by 6 people :
 
 ## ✅&nbsp; Requirements
 
-Symbiose requires a **PHP version higher or equal to 7.2** and is compatible with every **Symfony version starting from 4.3**. Have a look at the `require` section in the [composer.json](#//TODO) of the [Symbiose/Symbiose](#TODO) core framework to find an **up-to-date list of the requirements** of Symbiose content management system.
+Symbiose mobile app requires a **a theme to load templates & design**. Have a look at the `theme.res` section in the [Symbiose/src/](https://github.com/SkanderThabet/SymbioseMobile/blob/main/Symbiose/src/) of the [SymbioseMobile/Symbiose/src](https://github.com/SkanderThabet/SymbioseMobile/blob/main/Symbiose/src/theme.res) core framework Symbiose content management system.
