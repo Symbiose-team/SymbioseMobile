@@ -43,7 +43,7 @@ public class AffichageListConver {
     private Resources res;
 
     public AffichageListConver(Resources res) {
-        theme = UIManager.initFirstTheme("/a");
+                        theme = UIManager.initFirstTheme("/theme");
 
         f = new Form("List des convers", new FlowLayout(Component.CENTER));
 

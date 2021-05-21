@@ -37,6 +37,7 @@ public class AjoutCommentaire {
     private Resources res;
 
     public AjoutCommentaire(int id_q) {
+        
         f = new Form("page d'ajout de commentaire");
         tdesc = new TextField("", "description");
         btnajout = new Button("commenter");

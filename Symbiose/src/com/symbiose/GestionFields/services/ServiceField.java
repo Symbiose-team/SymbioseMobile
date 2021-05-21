@@ -246,7 +246,7 @@ boolean success = m.sendMessageViaCloudSync("Codename One", "cheima.sassi@gmail.
         ConnectionRequest con = new ConnectionRequest();// création d'une nouvelle demande de connexion
      String Url ="http://localhost:8000/deleteandroid/" +id_rep;
 
-    
+
        con.setUrl(Url);// Insertion de l'URL de notre demande de connexion
 
         con.addResponseListener((e) -> {
@@ -269,6 +269,22 @@ boolean success = m.sendMessageViaCloudSync("Codename One", "cheima.sassi@gmail.
         
         }
     }
+                
+                public void updateReponsee(field rep) {
+
+            ConnectionRequest con = new ConnectionRequest();// création d'une nouvelle demande de connexion
+            con.setUrl("http://localhost:8000/putt?id=" +rep.getId()+ "&status=" +rep.getStatus()) ;// Insertion de l'URL de notre demande de connexion
+            NetworkManager.getInstance().addToQueueAndWait(con);// Ajout de notre demande de connexion à la file d'attente du NetworkManager
+            String data = new String(con.getResponseData());
+            JSONParser j = new JSONParser();
+        try {
+            System.out.println(j.parseJSON(new CharArrayReader(data.toCharArray())));
+        } catch (IOException ex) {
+
+        }
+    }
+                
+                
      public void Message(){
       Form hi = new Form("Contacts", new BoxLayout(BoxLayout.Y_AXIS));
       hi.add(new InfiniteProgress());
@@ -300,4 +316,57 @@ Display.getInstance().scheduleBackgroundTask(() -> {
     });
 });
                 }
+     
+     
+     public ArrayList<field> getAllTaskss(field f){
+        String url = "http://localhost:8000/androidafl?id=" +f.getId();
+               req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+
+            @Override
+
+            public void actionPerformed(NetworkEvent evt) {
+
+
+             //   System.out.println( new String (req.getResponseData()));
+                fields = parseTaskss(new String(req.getResponseData()));
+               req.removeResponseListener(this);
+
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+
+        return fields;
+    }
+     public ArrayList<field> parseTaskss(String jsonText){
+        try {
+            fields=new ArrayList<>();
+            JSONParser j = new JSONParser();// Instanciation d'un objet JSONParser permettant le parsing du résultat json
+
+ 
+            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+
+            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+
+            for(Map<String,Object> obj : list){
+                field t = new field();
+
+
+                 t.setName(obj.get("name").toString());
+              //  t.setSerialNumber((int) obj.get("serialNumber"));
+                 t.setAddress(obj.get("address").toString());
+          //       t.setEntre(new Date((long) obj.get("Date_start")) );
+
+                fields.add(t);
+            }
+
+
+        } catch (IOException ex) {
+
+        }
+
+        return fields;
+    }
 }

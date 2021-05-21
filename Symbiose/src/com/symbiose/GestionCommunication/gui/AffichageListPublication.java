@@ -41,7 +41,7 @@ private Resources theme;
 
   
     public AffichageListPublication(Resources res) {
-                        theme = UIManager.initFirstTheme("/a");
+                        theme = UIManager.initFirstTheme("/theme");
 
            f = new Form("List des publications", new FlowLayout(Component.CENTER));
            

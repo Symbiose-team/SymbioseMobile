@@ -43,6 +43,7 @@ import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.util.Resources;
 import com.symbiose.GestionEvents.gui.HomeForm;
 import com.symbiose.GestionMatchs.gui.GameForm;
+import com.symbiose.GestionProduct.gui.HomeProductForm;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -97,7 +98,7 @@ public class SideMenuBaseForm extends Form {
         // getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ARROW_BACK, e -> goBack(res, new Form()));
         getToolbar().addMaterialCommandToSideMenu("  Dashboard", FontImage.MATERIAL_DASHBOARD, e -> showDashboard(res));
         getToolbar().addMaterialCommandToSideMenu("  Fields", FontImage.MATERIAL_VIEW_LIST, e -> showProjects(res));
-        getToolbar().addMaterialCommandToSideMenu("  Calendar", FontImage.MATERIAL_CALENDAR_TODAY, e -> showCalendar(res));
+        getToolbar().addMaterialCommandToSideMenu("  Products", FontImage.MATERIAL_PEOPLE, e -> showCalendar(res));
         getToolbar().addMaterialCommandToSideMenu("  Matches", FontImage.MATERIAL_ACCESS_TIME, e -> showTasks(res));
         getToolbar().addMaterialCommandToSideMenu("  Events", FontImage.MATERIAL_TRENDING_UP, e -> showActivities(res));
         getToolbar().addMaterialCommandToSideMenu("  Communication", FontImage.MATERIAL_COMMENT, e -> showCommunication(res));
@@ -116,27 +117,11 @@ public class SideMenuBaseForm extends Form {
     }
 
     protected void showProjects(Resources res) {
-        new HomeFieldForm(res).show();
-//        new ProjectsForm(res, this).show();
-
-        /* DropboxAccess.setConsumerKey("4wwgb8kt70pr31r");
-        DropboxAccess.setConsumerSecret("rhm6b48dzsl166g");
-        DropboxAccess.getInstance().showAuthentication(new ActionListener() {
-            @Override
-
-            public void actionPerformed(ActionEvent evt) {
-                if (evt.getSource() != null) {
-                    Dropbox drop = new Dropbox();
-                    drop.showDropboxFilePicker(true);
-                }
-            }
-
-        });*/
+        new HomeFieldForm().show();
     }
 
     protected void showCalendar(Resources res) {
-//        new CalendarForm(res).show();
-
+        new HomeProductForm(res).show();
     }
 
     protected void showCommunication(Resources res) {

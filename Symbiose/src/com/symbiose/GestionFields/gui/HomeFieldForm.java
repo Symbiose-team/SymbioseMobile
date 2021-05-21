@@ -26,7 +26,9 @@ Form current;
     private Form form ;
     private Toolbar tb;
     private Container evenements;
-    public HomeFieldForm(Resources res) {
+    
+    public HomeFieldForm() {
+      
         ComboBox box =new ComboBox();
          box.addItem("Admin");
         box.addItem("Client");
@@ -48,17 +50,22 @@ Form current;
         Button delete=new Button("Supprimer Terrain");
         Button aff=new Button("Liste de Terrain");
         Button modif=new Button("Modifier Terrain ");
-        Button btnDashboard = new Button("Go back Dashboard");
+        Button reserve=new Button(" Reserver un Terrain ");
+        Button Contact=new Button("Contact Fournisseur");
+        reserve.addActionListener(e -> new reserve(current).show());
+
+        Button consulter=new Button("Consulter Detail");
+        consulter.addActionListener(e -> new consulter(current).show());
 
 
         btn.addActionListener(e -> new addTaskForm(current).show());
+        Contact.addActionListener(e -> new Contacte(current).show());
         delete.addActionListener(e -> new delete(current).show());
         aff.addActionListener(e -> new ListeForm(current).show());
         modif.addActionListener(e -> new update(current).show());
-        btnDashboard.addActionListener(e-> new Dashboard(res).show());
 
 
-        addAll(box,btn,aff,delete,modif,btnDashboard);
+        addAll(box,btn,aff,delete,modif,consulter,reserve,Contact);
         
     }
 

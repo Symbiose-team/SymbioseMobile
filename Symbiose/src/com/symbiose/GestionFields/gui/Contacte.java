@@ -24,9 +24,7 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
-import com.symbiose.GestionFields.entities.field;
-import java.util.Date;
-import com.symbiose.GestionFields.services.ServiceField;
+
 
 /**
  *
@@ -37,13 +35,14 @@ public class Contacte extends Form   {
     private Form form ;
     private Toolbar tb;
     private Container evenements;
-public Contacte(){
+public Contacte(Form current){
     setLayout(BoxLayout.y());
         
-      
-        Form hi = new Form("Contacts", new BoxLayout(BoxLayout.Y_AXIS));
+       setTitle("Number of Provider");
+      Form hi = new Form("Contacts", new BoxLayout(BoxLayout.Y_AXIS));
       hi.add(new InfiniteProgress());
-      int size = Display.getInstance().convertToPixels(5, true);
+     
+      int size = Display.getInstance().convertToPixels(10, true);
       FontImage fi = FontImage.createFixed("" + FontImage.MATERIAL_PERSON, FontImage.getMaterialDesignFont(), 0xff, size, size);
 
 Display.getInstance().scheduleBackgroundTask(() -> {
@@ -72,6 +71,10 @@ Display.getInstance().scheduleBackgroundTask(() -> {
 });
                 
        addAll(hi);
+          getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
+                , e-> current.showBack()); // Revenir vers l'interface précédente
+            
 }
+
 }
 

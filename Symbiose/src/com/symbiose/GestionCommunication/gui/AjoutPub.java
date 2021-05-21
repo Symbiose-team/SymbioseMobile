@@ -37,7 +37,7 @@ public class AjoutPub {
       private Resources theme;
 
     public AjoutPub(Resources res) {
-                theme = UIManager.initFirstTheme("/a");
+                        theme = UIManager.initFirstTheme("/theme");
         f = new Form("Ajout de question", new FlowLayout(Component.CENTER));
         tdesc = new TextField("","description");
         btnajout = new Button("ajouter");
