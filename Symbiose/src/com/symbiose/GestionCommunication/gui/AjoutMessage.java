@@ -33,7 +33,7 @@ private Resources theme;
 
    
     public AjoutMessage(int id_q) {
-                        theme = UIManager.initFirstTheme("/theme3");
+                        theme = UIManager.initFirstTheme("/theme");
 
           f = new Form("Conversations");
         tdesc = new TextField("","message");

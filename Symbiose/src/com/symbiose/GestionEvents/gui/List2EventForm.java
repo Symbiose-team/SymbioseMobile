@@ -45,14 +45,6 @@ public class List2EventForm extends Form{
         setToolbar(tb);
         tb.setUIID("Container");
         tb.setBackCommand("back", e -> previous.showBack());
-        /*
-        Button btnAddEvent = new Button("Add event");
-        btnAddEvent.addActionListener(e-> new AddEventForm(current).show());
-        Container cnt = new Container(BoxLayout.x());
-        
-        cnt.add(btnAddEvent);
-        add(cnt);
-        */
         for (Event m :events ) {
                     
                 Container cnt1 = new Container(BoxLayout.y());

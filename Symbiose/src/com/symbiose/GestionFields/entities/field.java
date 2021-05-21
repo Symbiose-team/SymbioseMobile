@@ -19,7 +19,23 @@ public class field {
     private String name; 
     private String provider;
     private String Address;
+    private Boolean status;
+    public field(int id){
+        this.id=id;
+    }
 
+    public field(int id, Boolean status) {
+        this.id = id;
+        this.status = status;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
     private String price;
     private String space;
     private Date entre  ;
@@ -141,7 +157,7 @@ public class field {
 
     @Override
     public String toString() {
-        return   "id=" + id + "serialNumber=" + serialNumber + "name=" + name ;
+        return  "name=" + name +"    ,   "   +"address=" + Address ;
     }
     
     public field(int id, int serialNumber, String name) {

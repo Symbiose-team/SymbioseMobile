@@ -80,7 +80,7 @@ Resources theme;
  * @return the category series
  */
 protected CategorySeries buildCategoryDataset(String title, double[] values) {
-                            theme = UIManager.initFirstTheme("/theme3");
+                            theme = UIManager.initFirstTheme("/theme");
 
     CategorySeries series = new CategorySeries(title);
     int k = 0;

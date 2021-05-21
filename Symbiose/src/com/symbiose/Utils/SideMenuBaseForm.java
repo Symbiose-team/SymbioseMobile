@@ -42,6 +42,8 @@ import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.util.Resources;
 import com.symbiose.GestionEvents.gui.HomeForm;
+import com.symbiose.GestionMatchs.gui.GameForm;
+import com.symbiose.GestionProduct.gui.HomeProductForm;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -75,11 +77,14 @@ public class SideMenuBaseForm extends Form {
         User us = u.profile();
         String image = us.getPicture();
         String firstname = us.getFirst_name();
+        String url ="http://localhost/Java/SymbioseApi/Symbiose-WEB/Symbiose/web/uploads/images/" + image;
 
         EncodedImage placeholder = EncodedImage.createFromImage(res.getImage("Image6.png"), false);
 
-        URLImage profilePic = URLImage.createToStorage(placeholder, "http://localhost/Java/SymbioseApi/Symbiose-WEB/Symbiose/web/uploads/images/" + image,
-                "http://localhost/Java/SymbioseApi/Symbiose-WEB/Symbiose/web/uploads/images/" + image);
+//        URLImage profilePic = URLImage.createToStorage(placeholder, "http://localhost/Java/SymbioseApi/Symbiose-WEB/Symbiose/web/uploads/images/" + image,
+//                "http://localhost/Java/SymbioseApi/Symbiose-WEB/Symbiose/web/uploads/images/" + image);
+        URLImage profilePic = URLImage.createToStorage(placeholder, url,
+                url);
         Image mask = res.getImage("round-mask.png");
         mask = mask.scaledHeight(mask.getHeight() / 4 * 3);
         //profilePic = profilePic.fill(mask.getWidth(), mask.getHeight());
@@ -93,11 +98,10 @@ public class SideMenuBaseForm extends Form {
         // getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ARROW_BACK, e -> goBack(res, new Form()));
         getToolbar().addMaterialCommandToSideMenu("  Dashboard", FontImage.MATERIAL_DASHBOARD, e -> showDashboard(res));
         getToolbar().addMaterialCommandToSideMenu("  Fields", FontImage.MATERIAL_VIEW_LIST, e -> showProjects(res));
-        getToolbar().addMaterialCommandToSideMenu("  Calendar", FontImage.MATERIAL_CALENDAR_TODAY, e -> showCalendar(res));
+        getToolbar().addMaterialCommandToSideMenu("  Products", FontImage.MATERIAL_PEOPLE, e -> showCalendar(res));
         getToolbar().addMaterialCommandToSideMenu("  Matches", FontImage.MATERIAL_ACCESS_TIME, e -> showTasks(res));
         getToolbar().addMaterialCommandToSideMenu("  Events", FontImage.MATERIAL_TRENDING_UP, e -> showActivities(res));
-        getToolbar().addMaterialCommandToSideMenu("  Teams", FontImage.MATERIAL_GROUP, e -> showTeamForm(res));
-        getToolbar().addMaterialCommandToSideMenu("  Communication", FontImage.MATERIAL_COMMENT, e -> showTeamForm(res));
+        getToolbar().addMaterialCommandToSideMenu("  Communication", FontImage.MATERIAL_COMMENT, e -> showCommunication(res));
         getToolbar().addMaterialCommandToSideMenu("  Account Settings", FontImage.MATERIAL_SETTINGS, e -> showSettingsForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new LoginForm(res).show());
 
@@ -113,35 +117,19 @@ public class SideMenuBaseForm extends Form {
     }
 
     protected void showProjects(Resources res) {
-        new HomeFieldForm(res).show();
-//        new ProjectsForm(res, this).show();
-
-        /* DropboxAccess.setConsumerKey("4wwgb8kt70pr31r");
-        DropboxAccess.setConsumerSecret("rhm6b48dzsl166g");
-        DropboxAccess.getInstance().showAuthentication(new ActionListener() {
-            @Override
-
-            public void actionPerformed(ActionEvent evt) {
-                if (evt.getSource() != null) {
-                    Dropbox drop = new Dropbox();
-                    drop.showDropboxFilePicker(true);
-                }
-            }
-
-        });*/
+        new HomeFieldForm().show();
     }
 
     protected void showCalendar(Resources res) {
-//        new CalendarForm(res).show();
-
+        new HomeProductForm(res).show();
     }
 
-    protected void showTeamForm(Resources res) {
-        new Accueil().getF().show();
+    protected void showCommunication(Resources res) {
+        new Accueil(res).getF().show();
     }
 
     protected void showTasks(Resources res) {
-//        new TasksForm(res).show();
+        new GameForm(res).show();
     }
 
     protected void showSettingsForm(Resources res) {
