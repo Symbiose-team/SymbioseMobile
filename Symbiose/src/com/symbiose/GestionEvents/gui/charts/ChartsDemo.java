@@ -41,7 +41,8 @@ public class ChartsDemo {
         }
         ChartDemosForm demos = new ChartDemosForm();
         current = demos;
-        demos.show();  
+        demos.show();
+        
     }
 
     public void stop() {

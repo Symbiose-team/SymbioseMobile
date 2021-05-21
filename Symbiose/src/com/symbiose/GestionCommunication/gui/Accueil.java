@@ -14,14 +14,19 @@ import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.Component;
 import com.codename1.ui.Container;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.util.Resources;
 import com.symbiose.GestionCommunication.entities.Publication;
 import com.symbiose.GestionCommunication.services.ServicePublication;
 import com.symbiose.GestionCommunication.services.ServiceCommentaire;
+import com.symbiose.GestionUsers.gui.Dashboard;
 import java.util.ArrayList;
+import com.symbiose.Utils.SideMenuBaseForm;
 
 
 /**
@@ -35,7 +40,7 @@ import java.util.ArrayList;
     Button btn_list,btn_ajout;
     
 //.getAllStyles().setBgImage(your Image) 
-    public Accueil() {
+    public Accueil(Resources res) {
 
        
       
@@ -51,7 +56,7 @@ import java.util.ArrayList;
          ctn.add(btn_list);
         btn_list.addActionListener( (evt) -> {
        
-            AffichageListPublication aff =new AffichageListPublication();
+            AffichageListPublication aff =new AffichageListPublication(res);
         aff.getF().show();
           
        }
@@ -65,7 +70,7 @@ import java.util.ArrayList;
          ctn.add(btn_ajout);
         btn_ajout.addActionListener( (evt) -> {
      
-            AjoutPub aj =new AjoutPub();
+            AjoutPub aj =new AjoutPub(res);
         aj.getF().show();
         
        }
@@ -83,7 +88,7 @@ import java.util.ArrayList;
          ctn.add(btn_list);
         btn_list.addActionListener( (evt) -> {
        
-            AffichageListConver aff =new AffichageListConver();
+            AffichageListConver aff =new AffichageListConver(res);
         aff.getF().show();
           
        }
@@ -100,8 +105,11 @@ import java.util.ArrayList;
        }
        
        );
-
-   
+        
+        f.getToolbar().addCommandToRightBar("Back", null, (ActionListener) ((evt) -> {
+            new Dashboard(res).show();
+        }));
+        
   
         f.add(ctn);  
       

@@ -26,6 +26,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.codename1.charts.util.ColorUtil;
+import static com.codename1.io.Log.e;
+import com.codename1.ui.Button;
+import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.util.Resources;
+import com.symbiose.GestionEvents.gui.HomeForm;
+import com.symbiose.GestionUsers.gui.Dashboard;
 
 
 
@@ -44,6 +50,7 @@ public class SalesBarChart extends AbstractDemoChart {
   public String getName() {
     return "Sales horizontal bar chart";
   }
+  
 
   /**
    * Returns the chart description.
@@ -60,6 +67,7 @@ public class SalesBarChart extends AbstractDemoChart {
    * @param context the context
    * @return the built intent
    */
+  
   public Form execute() {
     String[] titles = new String[] { "2020", "2021" };
     List<double[]> values = new ArrayList<double[]>();
@@ -88,8 +96,12 @@ public class SalesBarChart extends AbstractDemoChart {
     
     BarChart chart = new BarChart(buildBarDataset(titles, values), renderer,
         Type.DEFAULT);
+    
     return wrap("", new ChartComponent(chart));
     
   }
+  
+  
+  
 
 }

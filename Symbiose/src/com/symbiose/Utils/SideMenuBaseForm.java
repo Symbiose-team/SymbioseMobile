@@ -75,11 +75,14 @@ public class SideMenuBaseForm extends Form {
         User us = u.profile();
         String image = us.getPicture();
         String firstname = us.getFirst_name();
+        String url ="http://localhost/Java/SymbioseApi/Symbiose-WEB/Symbiose/web/uploads/images/" + image;
 
         EncodedImage placeholder = EncodedImage.createFromImage(res.getImage("Image6.png"), false);
 
-        URLImage profilePic = URLImage.createToStorage(placeholder, "http://localhost/Java/SymbioseApi/Symbiose-WEB/Symbiose/web/uploads/images/" + image,
-                "http://localhost/Java/SymbioseApi/Symbiose-WEB/Symbiose/web/uploads/images/" + image);
+//        URLImage profilePic = URLImage.createToStorage(placeholder, "http://localhost/Java/SymbioseApi/Symbiose-WEB/Symbiose/web/uploads/images/" + image,
+//                "http://localhost/Java/SymbioseApi/Symbiose-WEB/Symbiose/web/uploads/images/" + image);
+        URLImage profilePic = URLImage.createToStorage(placeholder, url,
+                url);
         Image mask = res.getImage("round-mask.png");
         mask = mask.scaledHeight(mask.getHeight() / 4 * 3);
         //profilePic = profilePic.fill(mask.getWidth(), mask.getHeight());
@@ -96,8 +99,7 @@ public class SideMenuBaseForm extends Form {
         getToolbar().addMaterialCommandToSideMenu("  Calendar", FontImage.MATERIAL_CALENDAR_TODAY, e -> showCalendar(res));
         getToolbar().addMaterialCommandToSideMenu("  Matches", FontImage.MATERIAL_ACCESS_TIME, e -> showTasks(res));
         getToolbar().addMaterialCommandToSideMenu("  Events", FontImage.MATERIAL_TRENDING_UP, e -> showActivities(res));
-        getToolbar().addMaterialCommandToSideMenu("  Teams", FontImage.MATERIAL_GROUP, e -> showTeamForm(res));
-        getToolbar().addMaterialCommandToSideMenu("  Communication", FontImage.MATERIAL_COMMENT, e -> showTeamForm(res));
+        getToolbar().addMaterialCommandToSideMenu("  Communication", FontImage.MATERIAL_COMMENT, e -> showCommunication(res));
         getToolbar().addMaterialCommandToSideMenu("  Account Settings", FontImage.MATERIAL_SETTINGS, e -> showSettingsForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new LoginForm(res).show());
 
@@ -136,8 +138,8 @@ public class SideMenuBaseForm extends Form {
 
     }
 
-    protected void showTeamForm(Resources res) {
-        new Accueil().getF().show();
+    protected void showCommunication(Resources res) {
+        new Accueil(res).getF().show();
     }
 
     protected void showTasks(Resources res) {
