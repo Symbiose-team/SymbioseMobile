@@ -28,7 +28,6 @@ import com.symbiose.GestionCommunication.services.ServiceCommentaire;
  */
 public class PieChartMobile {
 Resources theme;
-Resources res;
 
         public String getName() {
     return "Budget chart";
@@ -149,7 +148,7 @@ protected CategorySeries buildCategoryDataset(String title, double[] values) {
     // Create a form and show it.
     Form f = new Form("PieChart des questions", new BorderLayout());
      
-    f.getToolbar().addCommandToRightBar("retour", null, (ev)->{Accueil h=new Accueil(res);
+    f.getToolbar().addCommandToRightBar("retour", null, (ev)->{Accueil h=new Accueil();
           h.getF().show();
           });
     

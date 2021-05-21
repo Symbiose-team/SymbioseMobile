@@ -62,8 +62,7 @@ public class ServiceField {
     
       
     public boolean addTask(field t) {
-        String url = "http://localhost:8000/addFieldJSON/new?name=" +t.getName() +"&address=" +t.getAddress()  +"&provider=" +t.getProvider() +"&start=" +t.getEntre() +"&end="+t.getEnd()  +"&serial=" +t.getSerialNumber()  ;
-     //   String url = statics.BASE_URL + "/android/new?name=" + t.getName() + "/" ; //création de l'URL
+        String url = Statics.BASE_URL +"addFieldJSON/new?name=" +t.getName() +"&address=" +t.getAddress()  +"&provider=" +t.getProvider();
         req.setUrl(url);// Insertion de l'URL de notre demande de connexion
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -75,7 +74,7 @@ public class ServiceField {
                 n'importe quelle méthode du Service task, donc si on ne supprime
                 pas l'ActionListener il sera enregistré et donc éxécuté même si 
                 la réponse reçue correspond à une autre URL(get par exemple)*/
-
+                
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(req);

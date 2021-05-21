@@ -208,7 +208,7 @@ public class RegisterForm extends Form {
                             String url = "http://localhost/Java/SymbioseApi/Symbiose-WEB/Symbiose/web/s.php";
 
                             cr.setUrl(url);
-                            cr.setPost(false);
+                            cr.setPost(true);
                             String mime = "image/png";
                             try {
                                 cr.addData("file", filePath, mime);
