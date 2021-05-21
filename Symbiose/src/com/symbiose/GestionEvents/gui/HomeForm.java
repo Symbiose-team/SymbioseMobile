@@ -63,7 +63,6 @@ public class HomeForm extends Form{
         Toolbar.setGlobalToolbar(true);
 
         
-        add(new Label("Choose an option"));
         Button btnAddEvent = new Button("Add event");
         Button btnListEvents = new Button("List events");
         Button btnList2Events = new Button("List 2 events");
