@@ -10,6 +10,8 @@ import com.codename1.components.FloatingActionButton;
 import com.codename1.components.ImageViewer;
 import com.codename1.components.InfiniteProgress;
 import com.codename1.components.MultiButton;
+import com.symbiose.GestionEvents.gui.charts.ChartDemosForm;
+import com.symbiose.GestionEvents.gui.charts.ChartsDemo;
 import com.codename1.io.MultipartRequest;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.Button;
@@ -32,6 +34,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.symbiose.GestionUsers.entities.User;
 import com.symbiose.GestionUsers.gui.Dashboard;
@@ -51,30 +54,31 @@ public class HomeForm extends Form{
     
     static Map g;
     Form current;
+
     public HomeForm(Resources res){
         
         current=this;
         setTitle("Home");
         setLayout(BoxLayout.y());
+        Toolbar.setGlobalToolbar(true);
+
         
-        add(new Label("Choose an option"));
         Button btnAddEvent = new Button("Add event");
         Button btnListEvents = new Button("List events");
+        Button btnList2Events = new Button("List 2 events");
         Button btnDeleteEvents = new Button("Delete events");
         Button btnDashboard = new Button("Go back Dashboard");
-        Button btnDetails = new Button("Details");
+        Button btnDetails = new Button("Details event");
         Button btnUpdate = new Button("Update event");
+        Button ChartsApi = new Button("Charts API");
 
 
         
         btnAddEvent.addActionListener(e-> new AddEventForm(current).show());
-        btnListEvents.addActionListener(e-> new ListEventsForm(current).show());
-        btnDeleteEvents.addActionListener(e-> new DeleteEventForm(current).show());
+        btnList2Events.addActionListener(e-> new List2EventForm(current).show());
         btnDashboard.addActionListener(e-> new Dashboard(res).show());
-        btnDetails.addActionListener(e-> new DetailsEvent(current).show());
-        btnUpdate.addActionListener(e-> new UpdateEvent(current).show());
-        //getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> new Dashboard(res).show());
-        addAll(btnAddEvent,btnListEvents,btnUpdate,btnDeleteEvents,btnDashboard);
+        ChartsApi.addActionListener(e-> new ChartDemosForm().show());
+        addAll(btnAddEvent,btnList2Events,ChartsApi,btnDashboard);
         
         
     }

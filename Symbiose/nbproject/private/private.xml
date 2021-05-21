@@ -3,26 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="PI-Mobile">
-            <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/editProfileForm.java</file>
-            <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/WalkthruForm.java</file>
-            <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/RegisterForm.java</file>
-            <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/settingsForm.java</file>
-            <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/Dashboard.java</file>
-            <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/services/userService.java</file>
-            <file>file:/C:/xampp/htdocs/Java/SymbioseMobile/Symbiose/src/com/symbiose/Utils/Statics.java</file>
-        </group>
         <group>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/RegisterForm.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionMatchs/services/ServiceGame.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/LoginForm.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionMatchs/gui/GameForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/charts/ChartsDemo.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/charts/IDemoChart.java</file>
             <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/HomeForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/AddEventForm.java</file>
             <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/Utils/SideMenuBaseForm.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionMatchs/gui/ListGameForm.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionUsers/gui/settingsForm.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionMatchs/gui/AddGameForm.java</file>
-            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionMatchs/entities/Game.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/build.xml</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionFields/entities/field.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/List2EventForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/charts/AbstractDemoChart.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionFields/gui/addTaskForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/services/ServiceEvent.java</file>
+            <file>jar:file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/lib/CodenameOne_SRC.zip!/com/codename1/ui/events/ActionListener.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionFields/gui/ListeForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionFields/services/ServiceField.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/entities/Event.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/Utils/Statics.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/charts/SalesBarChart.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/charts/ChartDemosForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/charts/ChartsInBoxLayout.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionFields/gui/HomeFieldForm.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/services/LocalNotificationTest.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/Symbiose.java</file>
+            <file>file:/C:/xampp/htdocs/SymbioseMobile/Symbiose/src/com/symbiose/GestionEvents/gui/UpdateEvent.java</file>
         </group>
+        <group name="PI-Mobile"/>
     </open-files>
 </project-private>
