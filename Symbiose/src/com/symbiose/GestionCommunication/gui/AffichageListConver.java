@@ -34,53 +34,54 @@ import java.util.StringTokenizer;
  */
 public class AffichageListConver {
 
-    Form f; 
+    Form f;
     SpanLabel lb;
     Container ctn, ctn1;
-    ArrayList<Conversation>  listpub = new ArrayList<>();
-    ArrayList<User>  listuser = new ArrayList<>();
-private Resources theme;
+    ArrayList<Conversation> listpub = new ArrayList<>();
+    ArrayList<User> listuser = new ArrayList<>();
+    private Resources theme;
+    private Resources res;
 
-    public AffichageListConver() {
-                        theme = UIManager.initFirstTheme("/theme");
+    public AffichageListConver(Resources res) {
+        theme = UIManager.initFirstTheme("/a");
 
-           f = new Form("List des convers", new FlowLayout(Component.CENTER));
-           
+        f = new Form("List des convers", new FlowLayout(Component.CENTER));
+
         f.getAllStyles().setBgColor(0xfff2e6);
         ctn = new Container(BoxLayout.y());
         ctn1 = new Container(BoxLayout.y());
         ctn.setScrollableY(true);
-          ctn1.setScrollableY(true);
-          TextField filter = new TextField();
-          filter.addDataChangedListener((type, index) -> {
-              ArrayList<Conversation > filtred_questions = new ArrayList<>();
-              for (Conversation q : listpub){
-                  if (q.getId() != 0)
-                      filtred_questions.add(q);
-              }
-              ctn.removeAll();
-              setQuestions(filtred_questions);
-              
-              f.revalidate();
-          });
-          ctn1.add(filter);
-  
-        ServiceConversation sc=new ServiceConversation();
-   //   lb.setText(serviceQuestion.getListQuestion().toString());//hatina fl lb resultat mtaa lmethode getList2()
-     
- 
-   listpub=sc.getListPub();
-   setQuestions(listpub);
+        ctn1.setScrollableY(true);
+        TextField filter = new TextField();
+        filter.addDataChangedListener((type, index) -> {
+            ArrayList<Conversation> filtred_questions = new ArrayList<>();
+            for (Conversation q : listpub) {
+                if (q.getId() != 0) {
+                    filtred_questions.add(q);
+                }
+            }
+            ctn.removeAll();
+            setQuestions(filtred_questions);
 
-       f.add(ctn1);
-         f.add(ctn);
-          f.getToolbar().addCommandToRightBar("retour", null, (ev)->{Accueil h=new Accueil();
-          h.getF().show();
-          });
+            f.revalidate();
+        });
+        ctn1.add(filter);
+
+        ServiceConversation sc = new ServiceConversation();
+        //   lb.setText(serviceQuestion.getListQuestion().toString());//hatina fl lb resultat mtaa lmethode getList2()
+
+        listpub = sc.getListPub();
+        setQuestions(listpub);
+
+        f.add(ctn1);
+        f.add(ctn);
+        f.getToolbar().addCommandToRightBar("retour", null, (ev) -> {
+            Accueil h = new Accueil(res);
+            h.getF().show();
+        });
     }
-   
-    
-  public Form getF() {
+
+    public Form getF() {
         return f;
     }
 
@@ -89,20 +90,18 @@ private Resources theme;
     }
 
     private void setQuestions(ArrayList<Conversation> listQuestions) {
-    
-       for (Conversation q :listQuestions ){
-     
-          MultiButton mb= new MultiButton((Integer.toString(q.getUser1_id())));
-             
-          final FontImage placeholderImage =FontImage.createMaterial(FontImage.MATERIAL_PERSON,"label", 6);
-           ServiceConversation sc=new ServiceConversation();
-           String a=null;
+
+        for (Conversation q : listQuestions) {
+
+            MultiButton mb = new MultiButton((Integer.toString(q.getUser1_id())));
+
+            final FontImage placeholderImage = FontImage.createMaterial(FontImage.MATERIAL_PERSON, "label", 6);
+            ServiceConversation sc = new ServiceConversation();
+            String a = null;
             mb.setIcon(placeholderImage);
-             mb.setTextLine1(q.getEmail());
-           
-       
-       
-   /*
+            mb.setTextLine1(q.getEmail());
+
+            /*
        String date =q.getDate_question() ;
     String delimiter = "T";
     StringTokenizer fruitsTokenizer = new StringTokenizer(date, delimiter);
@@ -110,42 +109,35 @@ private Resources theme;
             String newdate = fruitsTokenizer.toString();
          
     }
-       */   
-          
-  /*String date= q.getDate_question().substring(0, 10);
+             */
+ /*String date= q.getDate_question().substring(0, 10);
   String time= q.getDate_question().substring(11, 19);
        
      mb.setTextLine4(date+"/"+time);
-*/
-     
-        //methode oncklick aal element de liste
-       mb.addActionListener( (evt) -> {
-           
-           varGlobales.setId(q.getId());
-          
-             DetailConver dq=new DetailConver();
-        dq.getF().show();
-          
-       }
-       
-       );
-        ctn.add(mb);
-       Button btn_comment = new Button("Envoyer un message");
-         ctn.add(btn_comment);
-    
-         
-        btn_comment.addActionListener( (evt) -> {
-           int id_q= q.getId();
-            System.out.println(id_q);
-       AjoutMessage ajtCm=new AjoutMessage(id_q);
-    ajtCm.getF().show();
-  
-          
-       }  );
-        
-       }
+             */
+            //methode oncklick aal element de liste
+            mb.addActionListener((evt) -> {
+
+                varGlobales.setId(q.getId());
+
+                DetailConver dq = new DetailConver(res);
+                dq.getF().show();
+
+            }
+            );
+            ctn.add(mb);
+            Button btn_comment = new Button("Envoyer un message");
+            ctn.add(btn_comment);
+
+            btn_comment.addActionListener((evt) -> {
+                int id_q = q.getId();
+                System.out.println(id_q);
+                AjoutMessage ajtCm = new AjoutMessage(id_q);
+                ajtCm.getF().show();
+
+            });
+
+        }
     }
 
-    
-    
 }

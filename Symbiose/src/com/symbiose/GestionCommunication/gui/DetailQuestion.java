@@ -19,6 +19,7 @@ import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.util.Resources;
 import com.symbiose.GestionCommunication.entities.Publication;
 import com.symbiose.GestionCommunication.entities.Commentaire;
 import com.symbiose.GestionCommunication.services.ServicePublication;
@@ -36,6 +37,7 @@ public class DetailQuestion  {
   
     Container ctnq, ctnr;
            ArrayList<Commentaire>  ListReponses = new ArrayList<>();
+    private Resources res;
     
     public DetailQuestion(int id_q1) {
     
@@ -138,7 +140,7 @@ int id_q= ListReponses.get(0).getId_quest();
            f.add(ctnr);
           f.add(ctn_verticale);
  
-       f.getToolbar().addCommandToRightBar("retour", null, (ev)->{AffichageListPublication l=new AffichageListPublication();
+       f.getToolbar().addCommandToRightBar("retour", null, (ev)->{AffichageListPublication l=new AffichageListPublication(res);
           l.getF().show();
           });
      

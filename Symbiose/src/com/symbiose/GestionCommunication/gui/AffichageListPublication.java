@@ -40,8 +40,8 @@ public class AffichageListPublication {
 private Resources theme;
 
   
-    public AffichageListPublication() {
-                        theme = UIManager.initFirstTheme("/theme");
+    public AffichageListPublication(Resources res) {
+                        theme = UIManager.initFirstTheme("/a");
 
            f = new Form("List des publications", new FlowLayout(Component.CENTER));
            
@@ -77,7 +77,7 @@ private Resources theme;
 
        f.add(ctn1);
          f.add(ctn);
-          f.getToolbar().addCommandToRightBar("retour", null, (ev)->{Accueil h=new Accueil();
+          f.getToolbar().addCommandToRightBar("retour", null, (ev)->{Accueil h=new Accueil(res);
           h.getF().show();
           });
     }

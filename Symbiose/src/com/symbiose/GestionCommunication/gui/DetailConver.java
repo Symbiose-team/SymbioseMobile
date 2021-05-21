@@ -24,6 +24,7 @@ import com.symbiose.GestionCommunication.entities.Message;
 import com.symbiose.GestionCommunication.entities.Conversation;
 import com.symbiose.GestionCommunication.services.ServicePublication;
 import com.symbiose.GestionCommunication.services.ServiceMessage;
+import com.codename1.ui.util.Resources;
 import java.util.ArrayList;
 
 /**
@@ -38,7 +39,7 @@ public class DetailConver {
     Container ctnq, ctnr;
            ArrayList<Message>  listmsg = new ArrayList<>();
     
-    public DetailConver() {
+    public DetailConver(Resources res) {
     
     
      
@@ -92,7 +93,7 @@ public class DetailConver {
 
       
       
-       DetailConver dq=new DetailConver();
+       DetailConver dq=new DetailConver(res);
     dq.getF().show();
           
        }  );
@@ -103,7 +104,7 @@ public class DetailConver {
            f.add(ctnr);
           f.add(ctn_verticale);
  
-       f.getToolbar().addCommandToRightBar("retour", null, (ev)->{AffichageListConver l=new AffichageListConver();
+       f.getToolbar().addCommandToRightBar("retour", null, (ev)->{AffichageListConver l=new AffichageListConver(res);
           l.getF().show();
           });
      
